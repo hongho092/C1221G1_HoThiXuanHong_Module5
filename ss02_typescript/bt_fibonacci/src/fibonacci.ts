@@ -13,4 +13,10 @@ for (let i=0; i<10; i++) {
     console.log(day_fibonaci(i))
 }
 
+let sum: number = 0;
+console.log("Tổng của dãy fibonacci gồm 10 chữ số")
+for (let i=0; i<10; i++) {
+    sum += day_fibonaci(i);
+}
+console.log(sum)
 

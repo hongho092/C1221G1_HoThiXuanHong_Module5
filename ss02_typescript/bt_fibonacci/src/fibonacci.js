@@ -11,3 +11,9 @@ console.log("Dãy fibonacci gồm 10 chữ số");
 for (var i = 0; i < 10; i++) {
     console.log(day_fibonaci(i));
 }
+var sum = 0;
+console.log("Tổng của dãy fibonacci gồm 10 chữ số");
+for (var i = 0; i < 10; i++) {
+    sum += day_fibonaci(i);
+}
+console.log(sum);
