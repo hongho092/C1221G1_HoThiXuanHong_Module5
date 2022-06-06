@@ -8,10 +8,9 @@ const buyACar = (car) => {
             else {
                 reject("Do not enough money");
             }
-        }, 100);
+        }, 100000);
     }));
 };
-money = 1000001;
 const promise = buyACar("Vinfast").then(value => {
     console.log(value);
 }, error => {

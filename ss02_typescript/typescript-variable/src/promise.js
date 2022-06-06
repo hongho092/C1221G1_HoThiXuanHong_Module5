@@ -11,7 +11,7 @@ var buyACar = function (car) {
         }, 100);
     }));
 };
-money = 1000001;
+money = 1000;
 var promise = buyACar("Vinfast").then(function (value) {
     console.log(value);
 }, function (error) {
