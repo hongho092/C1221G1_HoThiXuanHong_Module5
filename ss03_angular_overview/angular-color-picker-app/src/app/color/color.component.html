@@ -1,0 +1,11 @@
+<h3>Chọn màu</h3>
+<!--&lt;!&ndash;<input type="color" [(ngModel)]="color">&ndash;&gt;-->
+<input #element type="color" (change)="changeColorValue(element.value)">
+
+<!--<p [style]="color: {{color}}">Đoạn văn này</p>-->
+
+<p> {{color}}</p>
+
+<p class="output" [style.color]="color">
+  Đoạn văn này sẽ thay đổi khi bạn chọn màu
+</p>

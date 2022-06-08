@@ -1,0 +1,29 @@
+<h3>Máy tính đơn giản</h3>
+<p>Number 1:</p>
+<!--<input type="number" [(ngModel)]="number1">-->
+<input #element1 type="number" (change)="changNumber1(element1.valueAsNumber)">
+
+<p>Number 2:</p>
+<!--<input #element type="number" [(ngModel)]="number2">-->
+<input #element type="number" (change)="changNumber2(element.valueAsNumber)">
+
+<br> <br> <br> <br>
+<table>
+  <tr>
+    <td>Number 1: {{number1}}</td>
+    <td>Number 2: {{number2}}</td>
+  </tr>
+  <br><br>
+  <tr>
+    <td>Addition: {{addition}}     </td>
+    <td>Subtraction: {{subtraction}}     </td>
+    <td>Multiplication: {{multiplication}}    </td>
+    <td>Division: {{division}}    </td>
+  </tr>
+</table>
+<!--<p>Number 1: {{number1}}</p>-->
+<!--<p>Number 2: {{number2}}</p>-->
+<!--<p>Addition: {{addition}}</p>-->
+<!--<p>Subtraction: {{subtraction}}</p>-->
+<!--<p>Multiplication: {{multiplication}}</p>-->
+<!--<p>Division: {{division}}</p>-->
