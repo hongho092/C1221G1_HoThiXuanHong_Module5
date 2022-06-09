@@ -12,17 +12,15 @@
 
 
     <div class="row">
-      <div class="card my-5 me-2 col-4" each="customer, hong : ${customerPage}" style="width: 32%">
+      <div class="card my-3 me-2 col-4" *ngFor="let customer of customers" style="width: 32%">
         <div class="row bg">
           <div class="col-md-4">
-            <img
-              src="https://www.clipartmax.com/png/middle/71-717812_girl-person-woman-people-icon-profile-woman-icon.png"
-              class="img-fluid rounded-start" alt="...">
+            <img [src]="customer.img" class="img-fluid rounded-start" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <div class="row">
-                <div class="col-10"><h3 class="card-title font text-danger"><a class="text-decoration-none" href="#">HoHong</a></h3>
+                <div class="col-10"><h5 class="card-title font text-danger"><a class="text-decoration-none" href="#">{{customer.name}}</a></h5>
                 </div>
                 <div class=" col-2 btn-group dropend">
                   <div class="dropdown-toggle" data-bs-toggle="dropdown">
@@ -36,22 +34,21 @@
                       </button>
                     </li>
                     <li>
-                      <button class="btn btn-warning"><a class="text-decoration-none"
-                                                         href="@{/customer/edit(id=${customer.customerId})}">
+                      <button class="btn btn-warning"><a class="text-decoration-none" href="@{/customer/edit(id=${customer.customerId})}">
                         <i class="bi bi-wrench-adjustable"></i></a></button>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <p class="card-text">Sdt: 0987654321</p>
-              <p class="card-text">Địa chỉ: Quảng Nam</p>
-              <p class="card-text"></p>
-              <p class="card-text"></p>
-              <p class="card-text"></p>
-              <p class="card-text"></p>
+              <p class="card-text mt-2"><i class="bi bi-gender-trans"></i>  {{customer.gender}}</p>
+              <p class="card-text"><i class="fa-solid fa-cake-candles"></i>  {{customer.dateOfBirth | date: "dd-MM-yyyy"}}</p>
+              <p class="card-text"><i class="fa-solid fa-address-card"></i>  {{customer.idCardNumber}}</p>
+              <p class="card-text"><i class="fa-solid fa-mobile-screen-button"></i>  {{customer.numberPhone}}</p>
+              <p class="card-text"><i class="fa-solid fa-envelopes-bulk"></i>  {{customer.email}}</p>
+              <p class="card-text"><i class="bi bi-house"></i>  {{customer.address}}</p>
               <hr>
-              <p class="card-text"><small class="text-muted"></small></p>
+              <p class="card-text"><i class="fa-brands fa-elementor"></i><small class="text-muted">  {{customer.type}}</small></p>
             </div>
           </div>
         </div>

@@ -1,14 +1,27 @@
-<div class="popular_places_area">
+<div class="bradcam_area bradcam_bg_4">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
-        <div class="section_title text-center mb_70">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="bradcam_text text-center">
           <h3>DANH SÁCH HỢP ĐỒNG</h3>
-          <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf
-            moon beard words.</p>
+          <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="popular_places_area">
+  <div class="container">
+<!--    <div class="row justify-content-center">-->
+<!--      <div class="col-lg-6">-->
+<!--        <div class="section_title text-center mb_70">-->
+<!--          <h3>DANH SÁCH HỢP ĐỒNG</h3>-->
+<!--          <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf-->
+<!--            moon beard words.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
 
     <div class="row">
@@ -16,29 +29,23 @@
         <table class="table table-striped">
           <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">ID hợp đồng</th>
-            <th scope="col">Mã dịch vụ</th>
             <th scope="col">Ngày bắt đầu</th>
             <th scope="col">Ngày kết thúc</th>
             <th scope="col">Tiền đặt cọc</th>
             <th scope="col">Tổng tiền</th>
-            <th scope="col">Nhân viên tạo hợp đồng</th>
-            <th scope="col">Hợp đồng cho khách hàng</th>
+<!--            <th scope="col">Nhân viên tạo hợp đồng</th>-->
+<!--            <th scope="col">Hợp đồng cho khách hàng</th>-->
             <th scope="col">Khác</th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td text="${hong.count}"></td>
-            <td text="${service.serviceId}"></td>
-            <td text="${service.serviceCode}"></td>
-            <td text="${service.serviceName}"></td>
-            <td text="${service.serviceArea}"></td>
-            <td text="${service.serviceCost}"></td>
-            <td text="${service.serviceMaxPeople}"></td>
-            <td text="${service.serviceType.serviceTypeName}"></td>
-            <td text="${service.numberOfFloors}"></td>
+          <tr *ngFor="let contract of contracts">
+            <td>{{contract.id}}</td>
+            <td>{{contract.startDay | date: "dd/MM/yyyy"}}</td>
+            <td>{{contract.endDay | date: "dd/MM/yyyy"}}</td>
+            <td>{{contract.deposit | currency: "VND"}}</td>
+            <td>{{contract.totalMoney | currency: "VND"}}</td>
             <td>
               <div class="row">
                 <div class="btn-group dropend">

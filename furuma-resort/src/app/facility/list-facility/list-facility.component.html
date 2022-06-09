@@ -12,17 +12,16 @@
 
 
     <div class="row">
-      <div class="col-lg-4 col-md-6">
+      <div class="col-lg-4 col-md-6" *ngFor="let facility of facilitys">
         <div class="single_place">
           <div class="thumb">
-            <img src="assets/img/place/1.png" alt="">
-            <a class="text-decoration-none" href="#" class="prise text-decoration-none">$500</a>
+            <img [src]="facility.image" >
+            <a class="text-decoration-none" href="#" class="prise text-decoration-none">{{facility.cost | currency: "VND"}}</a>
           </div>
           <div class="place_info">
             <div class="row">
               <div class="col-10">
-                <h5 class="card-title"><a class="text-decoration-none" href="destination_details.html"><h3>
-                  California</h3></a></h5>
+                <h5 class="card-title"><a class="text-decoration-none" href="destination_details.html"><h3>{{facility.name}}</h3></a></h5>
               </div>
               <div class=" col-2 btn-group dropstart">
                 <div class="dropdown-toggle" data-bs-toggle="dropdown">
@@ -44,15 +43,21 @@
               </div>
             </div>
             <!--            <a class="text-decoration-none" href="destination_details.html"><h3>California</h3></a>-->
-            <p>United State of America</p>
+            <p>{{facility.area}} m2</p>
+            <p>{{facility.type}}</p>
+            <p>{{facility.rentType}}</p>
+            <p>{{facility.descriptionOtherConvenience}}</p>
             <div class="rating_days d-flex justify-content-between">
                 <span class="d-flex justify-content-center align-items-center">
+<!--                  <p *ngFor="let i of facility.standardRoom">-->
+<!--                    <i class="fa fa-star"></i>-->
+<!--                  </p>-->
                      <i class="fa fa-star"></i>
                      <i class="fa fa-star"></i>
                      <i class="fa fa-star"></i>
                      <i class="fa fa-star"></i>
                      <i class="fa fa-star"></i>
-                     <a class="text-decoration-none" href="#">(20 Review)</a>
+                     <a class="text-decoration-none" href="#">({{facility.review}} review)</a>
                 </span>
               <div class="days">
                 <i class="fa fa-clock-o"></i>
