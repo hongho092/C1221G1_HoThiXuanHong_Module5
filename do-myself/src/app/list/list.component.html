@@ -1,0 +1,8 @@
+<h3>Danh sách học viên</h3>
+<p>Id: {{student.id}}</p>
+<p>Tên: {{student.name}}</p>
+<p>Điểm: {{student.mark}}</p>
+<p>Hình ảnh: </p><img [src]="student.image" alt="">
+<label>Chấm điểm</label>
+<!--<input type="number" (change)="getMark($event.target['value'])">-->
+<input type="number" [(ngModel)]="student.mark">

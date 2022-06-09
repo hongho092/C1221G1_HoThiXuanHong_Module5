@@ -1,0 +1,84 @@
+<div class="popular_places_area">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="section_title text-center mb_70">
+          <h3>DANH SÁCH KHÁCH HÀNG</h3>
+          <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf
+            moon beard words.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="card my-5 me-2 col-4" each="customer, hong : ${customerPage}" style="width: 32%">
+        <div class="row bg">
+          <div class="col-md-4">
+            <img
+              src="https://www.clipartmax.com/png/middle/71-717812_girl-person-woman-people-icon-profile-woman-icon.png"
+              class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-10"><h3 class="card-title font text-danger"><a class="text-decoration-none" href="#">HoHong</a></h3>
+                </div>
+                <div class=" col-2 btn-group dropend">
+                  <div class="dropdown-toggle" data-bs-toggle="dropdown">
+                    <i class="bi bi-patch-plus-fill"></i>
+                  </div>
+                  <ul class="dropdown-menu" style="width: 10px">
+                    <li>
+                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                              data-bs-target="#staticBackdrop">
+                        <i class="bi bi-trash3-fill"></i>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="btn btn-warning"><a class="text-decoration-none"
+                                                         href="@{/customer/edit(id=${customer.customerId})}">
+                        <i class="bi bi-wrench-adjustable"></i></a></button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <p class="card-text">Sdt: 0987654321</p>
+              <p class="card-text">Địa chỉ: Quảng Nam</p>
+              <p class="card-text"></p>
+              <p class="card-text"></p>
+              <p class="card-text"></p>
+              <p class="card-text"></p>
+              <hr>
+              <p class="card-text"><small class="text-muted"></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Xóa khách hàng</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Sẽ không thể hoàn tác nếu bạn xóa
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
