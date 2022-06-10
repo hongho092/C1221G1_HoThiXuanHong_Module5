@@ -3,7 +3,8 @@
 <input type="number" [(ngModel)]="number1">
 
 <p>Number 2:</p>
-<input type="number" [(ngModel)]="number2">
+<!--<input type="number" [(ngModel)]="number2">-->
+<input #element type="number" (change)="changNumber2(element.valueAsNumber)">
 
 
 

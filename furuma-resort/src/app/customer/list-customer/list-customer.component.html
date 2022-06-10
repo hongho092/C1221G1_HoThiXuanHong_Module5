@@ -34,17 +34,20 @@
                       </button>
                     </li>
                     <li>
-                      <button class="btn btn-warning"><a class="text-decoration-none" href="@{/customer/edit(id=${customer.customerId})}">
+                      <button class="btn btn-warning mt-2"><a class="text-decoration-none" href="#">
                         <i class="bi bi-wrench-adjustable"></i></a></button>
+                    </li>
+                    <li>
+                      <button class="btn btn-primary mt-2" (click)="detailCustomer(customer)"><i class="fa-solid fa-circle-info"></i></button>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <p class="card-text mt-2"><i class="bi bi-gender-trans"></i>  {{customer.gender}}</p>
-              <p class="card-text"><i class="fa-solid fa-cake-candles"></i>  {{customer.dateOfBirth | date: "dd-MM-yyyy"}}</p>
-              <p class="card-text"><i class="fa-solid fa-address-card"></i>  {{customer.idCardNumber}}</p>
-              <p class="card-text"><i class="fa-solid fa-mobile-screen-button"></i>  {{customer.numberPhone}}</p>
+<!--              <p class="card-text mt-2"><i class="bi bi-gender-trans"></i>  {{customer.gender}}</p>-->
+              <p class="card-text mt-2"><i class="fa-solid fa-cake-candles"></i>  {{customer.dateOfBirth | date: "dd-MM-yyyy"}}</p>
+<!--              <p class="card-text"><i class="fa-solid fa-address-card"></i>  {{customer.idCardNumber}}</p>-->
+<!--              <p class="card-text"><i class="fa-solid fa-mobile-screen-button"></i>  {{customer.numberPhone}}</p>-->
               <p class="card-text"><i class="fa-solid fa-envelopes-bulk"></i>  {{customer.email}}</p>
               <p class="card-text"><i class="bi bi-house"></i>  {{customer.address}}</p>
               <hr>
@@ -56,8 +59,8 @@
     </div>
   </div>
 </div>
-
-
+<app-info-customer [detailCustomer]= customer></app-info-customer>
+ng
 
 
 
@@ -79,3 +82,5 @@
     </div>
   </div>
 </div>
+
+

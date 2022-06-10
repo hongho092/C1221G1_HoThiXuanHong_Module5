@@ -33,6 +33,10 @@ export class CalculatorNewComponent implements OnInit {
     }
   }
 
+  changNumber2(value) {
+    this.number2 = value;
+  }
+
   constructor() { }
 
   ngOnInit(): void {

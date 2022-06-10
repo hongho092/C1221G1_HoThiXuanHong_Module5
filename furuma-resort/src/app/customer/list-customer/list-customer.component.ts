@@ -10,6 +10,8 @@ export class ListCustomerComponent implements OnInit {
 
   customers: Customer[] = [];
 
+  customer: Customer;
+
   constructor() {
     this.customers.push({
       id: 1,
@@ -76,4 +78,7 @@ export class ListCustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  detailCustomer(customer: Customer) {
+    this.customer = customer;
+  }
 }
