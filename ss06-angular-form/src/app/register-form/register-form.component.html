@@ -1,0 +1,57 @@
+<form [formGroup]="registerForm" (ngSubmit)="console()" novalidate>
+  <label>Email</label>
+  <input type="email" formControlName="email"><br>
+  <p class="text-danger" *ngIf="registerForm.controls.email.hasError('pattern')">Chưa đúng định dạng</p>
+  <p class="text-danger" *ngIf="registerForm.controls.email.hasError('required')">Không được để trống</p>
+
+
+  <form [formGroup]="confirmForm">
+    <label>Password</label>
+    <input type="password" name="password" formControlName="password"><br>
+<!--    <p class="text-danger" *ngIf="registerForm.controls.password.hasError('required')">Không được để trống</p>-->
+
+    <label>Confirm Password</label>
+    <input type="password" name="confirmPassword" formControlName="confirmPassword" >
+<!--    <p class="text-danger" *ngIf="registerForm.controls.confirmPassword.hasError('required')">Không được để trống</p>-->
+    <p *ngIf="confirmForm.errors?.passwordError && (confirmForm.touched || confirmForm.dirty)" class="text-danger">
+      Phải trùng với password
+    </p>
+  </form>
+
+<!--  <label>Password</label>-->
+<!--  <input type="password" formControlName="password"><br>-->
+<!--  <p class="text-danger" *ngIf="registerForm.controls.password.hasError('required') && registerForm.controls.password.touched">Chưa đúng định dạng</p>-->
+
+
+<!--  <label>Confirm Password</label>-->
+<!--  <input type="password" formControlName="confirmPassword"><br>-->
+<!--  <p class="text-danger" *ngIf="registerForm.controls.confirmPassword.hasError('notSame') && registerForm.controls.confirmPassword.touched">Chưa đúng định dạng</p>-->
+
+
+  <label>Country</label>
+  <select formControlName="country">
+    <option value="Hà Nội">Hà Nội</option>
+    <option value="Huế">Huế</option>
+    <option value="Đà Nẵng">Đà Nẵng</option>
+    <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+  </select><br>
+  <p class="text-danger" *ngIf="registerForm.controls.country.hasError('required')">Hãy chọn thông tin</p>
+
+
+  <label>Age</label>
+  <input type="email" formControlName="age"><br>
+  <p class="text-danger" *ngIf="registerForm.controls.age.hasError('invalid') && registerForm.controls.age.touched">Tuổi không được dưới 18 tuổi</p>
+
+
+  <label>Gender</label><br>
+    <label><input formControlName="gender" value="Nam" type="radio" checked/>Nam</label> <br/>
+    <label><input formControlName="gender" value="Nữ" type="radio"/>Nữ</label> <br/>
+  <p class="text-danger" *ngIf="registerForm.controls.gender.hasError('required')">Hãy chọn thông tin</p>
+
+  <label>Phone</label>
+  <input type="text" formControlName="phone"><br>
+  <p class="text-danger" *ngIf="registerForm.controls.phone.hasError('pattern') && registerForm.controls.phone.touched">Chưa đúng định dạng</p>
+
+
+  <button type="submit">Register</button>
+</form>

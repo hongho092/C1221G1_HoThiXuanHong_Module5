@@ -1,0 +1,14 @@
+<form [formGroup]="confirmForm" (ngSubmit) ="createUser(confirmForm.value)">
+  password
+  <input id="a" name="a" class="form-control"
+         required minlength="4"
+         formControlName="a">
+  confirm passwword
+  <input id="b" name="b" class="form-control"
+         required minlength="4"
+         formControlName="b" >
+  <div *ngIf="confirmForm.errors?.passwordError && (confirmForm.touched || confirmForm.dirty)" class="cross-validation-error-message alert alert-danger">
+    password mismatch
+  </div>
+  <input type="submit" class="btn btn-primary" value="Submit" />
+</form>

@@ -1,0 +1,17 @@
+<h3>Hãy Đăng Nhập</h3>
+
+<form [formGroup]="loginForm" (ngSubmit)="console()">
+  <label>User Name: </label>
+  <input type="text" formControlName="userName">
+  <p class="text-danger" *ngIf="loginForm.controls.userName.hasError('required')">Không được để trống</p>
+  <p class="text-danger" *ngIf="loginForm.controls.userName.hasError('pattern')">Chưa đúng định dạng</p>
+  <br>
+
+  <label>Password: </label>
+  <input type="password" formControlName="password">
+  <p class="text-danger" *ngIf="loginForm.controls.password.hasError('required')">Không được để trống</p>
+  <p class="text-danger" *ngIf="loginForm.controls.password.hasError('minlength')">Chưa đủ độ dài tối thiểu</p>
+  <br>
+
+  <button type="submit">Đăng nhập</button>
+</form>
