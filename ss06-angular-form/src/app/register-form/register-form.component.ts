@@ -17,7 +17,7 @@ export class RegisterFormComponent implements OnInit {
       // password: new FormControl('', [Validators.required]),
       // confirmPassword: new FormControl('', [this.checkPasswords]),
       country: new FormControl('', [Validators.required]),
-      age: new FormControl('', [this.validateCustomerAge]),
+      age: new FormControl('', [this.validateCustomAge]),
       gender: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.pattern('^\\+84\\d{9,10}$')])
     });
@@ -28,7 +28,7 @@ export class RegisterFormComponent implements OnInit {
     }, this.passwordErrorValidator);
   }
 
-  validateCustomerAge(age: AbstractControl) {
+  validateCustomAge(age: AbstractControl) {
     const value = age.value;
     if (value < 18) {
       return {invalid: true};

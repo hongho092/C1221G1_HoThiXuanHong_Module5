@@ -15,6 +15,7 @@ export class ListCustomerComponent implements OnInit {
   constructor() {
     this.customers.push({
       id: 1,
+      code: 'KH-1234',
       name: 'Nguyễn Thị Hòa',
       gender: 'nữ',
       dateOfBirth: '1988/09/12',
@@ -27,6 +28,7 @@ export class ListCustomerComponent implements OnInit {
     });
     this.customers.push({
       id: 2,
+      code: 'KH-2345',
       name: 'Nguyễn Văn Nam',
       gender: 'nam',
       dateOfBirth: '1967/10/22',
@@ -39,6 +41,7 @@ export class ListCustomerComponent implements OnInit {
     });
     this.customers.push({
       id: 3,
+      code: 'KH-3456',
       name: 'Lê Văn Thành',
       gender: 'nam',
       dateOfBirth: '1984/03/27',
@@ -51,6 +54,7 @@ export class ListCustomerComponent implements OnInit {
     });
     this.customers.push({
       id: 4,
+      code: 'KH-4567',
       name: 'Đào Thị Mơ',
       gender: 'nữ',
       dateOfBirth: '1995/04/23',
@@ -63,6 +67,7 @@ export class ListCustomerComponent implements OnInit {
     });
     this.customers.push({
       id: 5,
+      code: 'KH-5678',
       name: 'Hứa Văn Hùng',
       gender: 'nam',
       dateOfBirth: '1978/02/22',

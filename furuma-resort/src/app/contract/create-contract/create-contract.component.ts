@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-create-contract',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateContractComponent implements OnInit {
 
-  constructor() { }
+  createContractForm: FormGroup;
+
+  constructor() {
+    this.createContractForm = new FormGroup({
+      id: new FormControl(),
+      startDay: new FormControl(),
+      endDay: new FormControl(),
+      deposit: new FormControl('', [Validators.pattern('^[1-9]{1}[0-9]*$')]),
+      totalMoney: new FormControl('', [Validators.pattern('^[1-9]{1}[0-9]*$')]),
+    });
+  }
 
   ngOnInit(): void {
   }

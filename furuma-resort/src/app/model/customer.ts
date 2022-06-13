@@ -1,5 +1,6 @@
 export interface Customer {
   id: number;
+  code: string;
   name: string;
   gender: string;
   dateOfBirth: string;
@@ -7,6 +8,6 @@ export interface Customer {
   numberPhone: string;
   email: string;
   type: string;
-  address: string;
-  img: string;
+address: string;
+  img?: string;
 }
