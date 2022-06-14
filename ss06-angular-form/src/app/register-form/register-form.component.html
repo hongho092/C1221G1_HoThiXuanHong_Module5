@@ -1,31 +1,29 @@
 <form [formGroup]="registerForm" (ngSubmit)="console()" novalidate>
   <label>Email</label>
   <input type="email" formControlName="email"><br>
-  <p class="text-danger" *ngIf="registerForm.controls.email.hasError('pattern')">Chưa đúng định dạng</p>
+  <p class="text-danger" *ngIf="registerForm.controls.email.hasError('email')">Chưa đúng định dạng</p>
   <p class="text-danger" *ngIf="registerForm.controls.email.hasError('required')">Không được để trống</p>
 
 
-  <form [formGroup]="confirmForm">
+  <div formGroupName="confirmForm" >
     <label>Password</label>
     <input type="password" name="password" formControlName="password"><br>
-<!--    <p class="text-danger" *ngIf="registerForm.controls.password.hasError('required')">Không được để trống</p>-->
 
     <label>Confirm Password</label>
     <input type="password" name="confirmPassword" formControlName="confirmPassword" >
-<!--    <p class="text-danger" *ngIf="registerForm.controls.confirmPassword.hasError('required')">Không được để trống</p>-->
-    <p *ngIf="confirmForm.errors?.passwordError && (confirmForm.touched || confirmForm.dirty)" class="text-danger">
+    <p *ngIf="registerForm.controls.confirmForm.hasError('passwordError')" class="text-danger">
       Phải trùng với password
     </p>
-  </form>
+  </div>
 
-<!--  <label>Password</label>-->
-<!--  <input type="password" formControlName="password"><br>-->
-<!--  <p class="text-danger" *ngIf="registerForm.controls.password.hasError('required') && registerForm.controls.password.touched">Chưa đúng định dạng</p>-->
+  <label>Password</label>
+  <input type="password" formControlName="password"><br>
+  <p class="text-danger" *ngIf="registerForm.controls.password.hasError('required') && registerForm.controls.password.touched">Chưa đúng định dạng</p>
 
 
-<!--  <label>Confirm Password</label>-->
-<!--  <input type="password" formControlName="confirmPassword"><br>-->
-<!--  <p class="text-danger" *ngIf="registerForm.controls.confirmPassword.hasError('notSame') && registerForm.controls.confirmPassword.touched">Chưa đúng định dạng</p>-->
+  <label>Confirm Password</label>
+  <input type="password" formControlName="confirmPassword"><br>
+  <p class="text-danger" *ngIf="registerForm.controls.confirmPassword.hasError('invalid1') && registerForm.controls.confirmPassword.touched">Chưa đúng định dạng</p>
 
 
   <label>Country</label>

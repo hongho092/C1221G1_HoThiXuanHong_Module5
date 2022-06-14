@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register-form',
@@ -13,22 +13,20 @@ export class RegisterFormComponent implements OnInit {
 
   constructor() {
     this.registerForm = new FormGroup({
-      email: new FormControl('abc@gmail.com', [Validators.pattern('^[A-Za-z1-9]+@gmail.com$'), Validators.required]),
-      // password: new FormControl('', [Validators.required]),
-      // confirmPassword: new FormControl('', [this.checkPasswords]),
+      email: new FormControl('abc@gmail.com', [Validators.email, Validators.required]),
+      confirmForm: new FormGroup({
+        password: new FormControl('', [Validators.required]),
+        confirmPassword: new FormControl('', [Validators.required])
+      }, this.passwordErrorValidator),
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
       age: new FormControl('', [this.validateCustomAge]),
       gender: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.pattern('^\\+84\\d{9,10}$')])
     });
-
-    this.confirmForm = new FormGroup({
-      password: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required])
-    }, this.passwordErrorValidator);
   }
-
-  validateCustomAge(age: AbstractControl) {
+    validateCustomAge(age: AbstractControl) {
     const value = age.value;
     if (value < 18) {
       return {invalid: true};

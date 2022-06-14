@@ -12,7 +12,7 @@ export class LoginFormComponent implements OnInit {
 
   constructor() {
     this.loginForm = new FormGroup({
-      userName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+@gmail.com$')]),
+      userName: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }

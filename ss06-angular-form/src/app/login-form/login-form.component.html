@@ -4,7 +4,7 @@
   <label>User Name: </label>
   <input type="text" formControlName="userName">
   <p class="text-danger" *ngIf="loginForm.controls.userName.hasError('required')">Không được để trống</p>
-  <p class="text-danger" *ngIf="loginForm.controls.userName.hasError('pattern')">Chưa đúng định dạng</p>
+  <p class="text-danger" *ngIf="loginForm.controls.userName.hasError('email')">Chưa đúng định dạng email</p>
   <br>
 
   <label>Password: </label>
