@@ -1,0 +1,14 @@
+<h3>Danh sách các từ vựng</h3>
+
+<table border="1">
+  <tr>
+    <th>STT</th>
+    <th>Id</th>
+    <th>Từ vựng</th>
+  </tr>
+  <tr *ngFor="let word of dictionarys, index as i">
+    <td>{{i + 1}}</td>
+    <td>{{word.id}}</td>
+    <td><a [routerLink]="['/detail',word.id]">{{word.word}}</a></td>
+  </tr>
+</table>

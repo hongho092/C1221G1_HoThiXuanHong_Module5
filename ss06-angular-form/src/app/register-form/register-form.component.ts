@@ -26,7 +26,8 @@ export class RegisterFormComponent implements OnInit {
       phone: new FormControl('', [Validators.pattern('^\\+84\\d{9,10}$')])
     });
   }
-    validateCustomAge(age: AbstractControl) {
+
+  validateCustomAge(age: AbstractControl) {
     const value = age.value;
     if (value < 18) {
       return {invalid: true};
