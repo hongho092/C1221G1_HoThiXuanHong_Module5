@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {TodoService} from '../../service/todo.service';
 
 @Component({
@@ -13,7 +13,8 @@ export class TodoEditComponent implements OnInit {
   id: number;
 
   constructor(private todoService: TodoService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       this.getTodo(this.id);
@@ -26,7 +27,7 @@ export class TodoEditComponent implements OnInit {
   getTodo(id: number) {
     return this.todoService.findById(id).subscribe(todo => {
       this.todoForm = new FormGroup({
-        name: new FormControl(todo.content),
+        content: new FormControl(todo.content),
       });
     });
   }
@@ -38,5 +39,6 @@ export class TodoEditComponent implements OnInit {
     }, e => {
       console.log(e);
     });
+    this.router.navigateByUrl('');
   }
 }

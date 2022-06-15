@@ -1,28 +1,24 @@
 {
   "todos": [
     {
-      "id": 1,
-      "content": "json-server"
+      "content": "quét nhà",
+      "id": 1
     },
     {
-      "id": 2,
-      "content": "json-server"
+      "content": "rửa chén",
+      "id": 2
     },
     {
-      "id": 3,
-      "content": "json-server"
+      "content": "giặt đồ",
+      "id": 3
     },
     {
-      "id": 4,
-      "content": "json-server"
+      "content": "lau nhà",
+      "id": 4
     },
     {
-      "content": "hohong",
+      "content": "học bài",
       "id": 5
-    },
-    {
-      "content": "null",
-      "id": 6
     }
   ]
 }
