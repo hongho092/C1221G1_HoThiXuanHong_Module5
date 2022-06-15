@@ -14,8 +14,8 @@ import { CreateFacilityComponent } from './facility/create-facility/create-facil
 import { ListContractComponent } from './contract/list-contract/list-contract.component';
 import { CreateContractComponent } from './contract/create-contract/create-contract.component';
 import { HomeComponent } from './home/home.component';
-import { InfoCustomerComponent } from './customer/info-customer/info-customer.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { DetailCustomerComponent } from './customer/detail-customer/detail-customer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     ListContractComponent,
     CreateContractComponent,
     HomeComponent,
-    InfoCustomerComponent
+    DetailCustomerComponent
   ],
     imports: [
         BrowserModule,

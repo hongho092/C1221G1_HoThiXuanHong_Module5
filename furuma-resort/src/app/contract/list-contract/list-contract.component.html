@@ -25,7 +25,7 @@
 
 
     <div class="row">
-      <div class="p-5 col-lg-12">
+      <div class="p-5 col-lg-12 text-center">
         <table class="table table-striped">
           <thead>
           <tr>
@@ -35,7 +35,7 @@
             <th scope="col">Tiền đặt cọc</th>
             <th scope="col">Tổng tiền</th>
 <!--            <th scope="col">Nhân viên tạo hợp đồng</th>-->
-<!--            <th scope="col">Hợp đồng cho khách hàng</th>-->
+            <th scope="col">Hợp đồng cho khách hàng</th>
             <th scope="col">Khác</th>
           </tr>
           </thead>
@@ -46,7 +46,7 @@
             <td>{{contract.endDay | date: "dd/MM/yyyy"}}</td>
             <td>{{contract.deposit | currency: "VND"}}</td>
             <td>{{contract.totalMoney | currency: "VND"}}</td>
-            <td>
+            <td>{{contract.customer.name}}<td>
               <div class="row">
                 <div class="btn-group dropend">
                   <div class="dropdown-toggle" data-bs-toggle="dropdown">

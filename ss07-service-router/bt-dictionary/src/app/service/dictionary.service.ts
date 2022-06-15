@@ -26,4 +26,5 @@ export class DictionaryService {
   findById(id: number) {
     return this.dictionarys.find(dictionary => dictionary.id === id);
   }
+
 }

@@ -24,23 +24,26 @@
 
 
     <div class="row">
-      <div class="col-2"></div>
-      <div class="p-5 col-8 background">
-        <form class="was-validated" [formGroup]="createContractForm" novalidate>
+      <div class="col-1"></div>
+      <div class="p-5 col-10 background shadow-lg rounded">
+        <form class="was-validated" [formGroup]="createContractForm" (ngSubmit)="create()" novalidate>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default0">ID hợp đồng</span>
             <input type="text" formControlName="id" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default0" required>
+            <span class="alert-danger input-group-text" *ngIf="createContractForm.controls.id.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default32">Ngày bắt đầu</span>
             <input type="date" formControlName="startDay" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default1" required>
+            <span class="alert-danger input-group-text" *ngIf="createContractForm.controls.startDay.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default3">Ngày kết thúc</span>
             <input type="date" formControlName="endDay" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default3" required>
+            <span class="alert-danger input-group-text" *ngIf="createContractForm.controls.endDay.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default4">Tiền đặt cọc</span>
@@ -48,6 +51,7 @@
                    aria-describedby="inputGroup-sizing-default4" required>
             <span class="alert-danger input-group-text"
                   *ngIf="createContractForm.controls.deposit.hasError('pattern')">Không nhập số âm và chữ</span>
+            <span class="alert-danger input-group-text" *ngIf="createContractForm.controls.deposit.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default37">Tổng tiền</span>
@@ -55,17 +59,16 @@
                    aria-describedby="inputGroup-sizing-default7" required>
             <span class="alert-danger input-group-text"
                   *ngIf="createContractForm.controls.totalMoney.hasError('pattern')">Không nhập số âm và chữ</span>
+            <span class="alert-danger input-group-text" *ngIf="createContractForm.controls.totalMoney.hasError('required')">Không được để trống</span>
           </div>
-<!--          <div class="input-group mb-3">-->
-<!--            <span class="input-group-text" id="inputGroup-sizing-default7">Nhân viên tạo hợp đồng</span>-->
-<!--            <input type="text" class="form-control" aria-label="Sizing example input"-->
-<!--                   aria-describedby="inputGroup-sizing-default7" required>-->
-<!--          </div>-->
-<!--          <div class="input-group mb-3">-->
-<!--            <span class="input-group-text" id="inputGroup-sizing-default47">Hợp đồng cho khách hàng</span>-->
-<!--            <input type="text" class="form-control" aria-label="Sizing example input"-->
-<!--                   aria-describedby="inputGroup-sizing-default7" required>-->
-<!--          </div>-->
+          <div class="input-group mb-3">
+            <label class="form-label"><span class="input-group-text">Hợp đồng cho khách hàng</span></label>
+            <select class="form-select is-invalid" formControlName="customer" aria-describedby="validationServer04Feedback" required>
+              <option selected value=""></option>
+              <option *ngFor="let customer of customers" [ngValue]="customer">{{customer.name}}</option>
+            </select>
+            <span class="alert-danger input-group-text span" *ngIf="createContractForm.controls.customer.hasError('required')">Không được để trống</span>
+          </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary position-relative">
               Tạo dịch vụ
@@ -76,7 +79,7 @@
           </div>
         </form>
       </div>
-      <div class="col-2"></div>
+      <div class="col-1"></div>
     </div>
   </div>
 </div>

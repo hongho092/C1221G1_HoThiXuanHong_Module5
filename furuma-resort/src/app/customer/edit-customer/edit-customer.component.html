@@ -11,72 +11,92 @@
     </div>
 
 
-    <div class="px-5 row">
-      <div class="col-2"></div>
-      <div class="col-8">
-        <form class="was-validated" action="/customer/save_edit" method="post">
-          <!--        <div class="input-group mb-3">-->
-          <!--          <span class="input-group-text" id="inputGroup-sizing-default">Sửa thông tin cho khách hàng có Id là -></span>-->
-          <!--          <input type="hidden" class="form-control" aria-label="Sizing example input"-->
-          <!--                 aria-describedby="inputGroup-sizing-default" required>-->
-          <!--        </div>-->
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="p-5 col-10 bg-light shadow-lg">
+        <form class="was-validated" [formGroup]="editCustomerForm" (ngSubmit)="editCustomer(id)" novalidate>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default10">Tên</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default10" required>
+<!--            <span class="input-group-text" id="inputGroup-sizing-default20">Id</span>-->
+            <input type="hidden" formControlName="id" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default20" required>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default0">Tên</span>
+            <input type="text" formControlName="name" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default0" required>
+            <span class="alert-danger input-group-text" *ngIf="editCustomerForm.controls.name.hasError('pattern')">Không đúng format tên</span>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default01">Mã khách</span>
+            <input type="text" formControlName="code" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default0" required>
+            <span class="alert-danger input-group-text" *ngIf="editCustomerForm.controls.code.hasError('pattern')">Không đúng format mã</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default1">Ngày sinh</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input type="text" formControlName="dateOfBirth" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default1" required>
           </div>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default3">Giới tính</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default3" required>
+            <label for="validationServer41" class="form-label"><span class="input-group-text">Giới tính</span></label>
+            <select class="form-select is-invalid" formControlName="gender" id="validationServer41" aria-describedby="validationServer04Feedback"
+                    required>
+              <option selected value=""></option>
+              <option [ngValue]="'Nam'">Nam</option>
+              <option [ngValue]="'Nữ'">Nữ</option>
+            </select>
+
           </div>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default2">CMND</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default2" required>
+            <span class="input-group-text" id="inputGroup-sizing-default3">CMND</span>
+            <input type="text" formControlName="idCardNumber" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default3" required>
+            <span class="alert-danger input-group-text"
+                  *ngIf="editCustomerForm.controls.idCardNumber.hasError('pattern')">9 hoặc 12 số</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default4">Số ĐT</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input type="text" formControlName="numberPhone" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default4" required>
+            <span class="alert-danger input-group-text"
+                  *ngIf="editCustomerForm.controls.numberPhone.hasError('pattern')">Không đúng format SDT</span>
           </div>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default9">Email</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default9" required>
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default6">Địa chỉ</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <span class="input-group-text" id="inputGroup-sizing-default6">Email</span>
+            <input type="text" formControlName="email" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default6" required>
+            <span class="alert-danger input-group-text" *ngIf="editCustomerForm.controls.email.hasError('pattern')">Không đúng format email</span>
           </div>
           <div class="input-group mb-3">
-            <label for="exampleDataList1" class="form-label"><span class="input-group-text">Loại khách</span></label>
-            <input class="form-control" list="datalistOptions1" id="exampleDataList1" placeholder="Gõ để tìm..." required>
-            <datalist id="datalistOptions1">
-              <option value="San Francisco">
-              <option value="New York">
-              <option value="Seattle">
-              <option value="Los Angeles">
-              <option value="Chicago">
-            </datalist>
+            <span class="input-group-text" id="inputGroup-sizing-default7">Địa chỉ</span>
+            <input type="text" formControlName="address" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default7" required>
+            <span class="alert-danger input-group-text" *ngIf="editCustomerForm.controls.address.hasError('pattern')">Không đúng format địa chỉ</span>
+          </div>
+          <div class="input-group mb-3">
+            <label for="validationServer4" class="form-label"><span class="input-group-text">Loại khách</span></label>
+            <select class="form-select is-invalid" formControlName="type" id="validationServer4" aria-describedby="validationServer04Feedback"
+                    required>
+              <option selected value=""></option>
+              <option [ngValue]="'Diamond'">Diamond</option>
+              <option [ngValue]="'Platinium'">Platinium</option>
+              <option [ngValue]="'Gold'">Gold</option>
+              <option [ngValue]="'Silver'">Silver</option>
+              <option [ngValue]="'Member'">Member</option>
+            </select>
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary position-relative">
-              Sửa thông tin khách hàng
-              <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                    <span class="visually-hidden">New alerts</span>
-                    </span>
+              Sửa khách hàng
+              <span
+                class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                                </span>
             </button>
           </div>
         </form>
       </div>
-      <div class="col-2"></div>
+      <div class="col-1"></div>
     </div>
   </div>
 </div>

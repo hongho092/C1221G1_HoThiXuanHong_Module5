@@ -9,6 +9,7 @@ import {EditCustomerComponent} from './customer/edit-customer/edit-customer.comp
 import {ListContractComponent} from './contract/list-contract/list-contract.component';
 import {CreateContractComponent} from './contract/create-contract/create-contract.component';
 import {CreateFacilityComponent} from './facility/create-facility/create-facility.component';
+import {DetailCustomerComponent} from './customer/detail-customer/detail-customer.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'edit-facility/:id', component: EditFacilityComponent},
   {path: 'list-customer', component: ListCustomerComponent},
   {path: 'create-customer', component: CreateCustomerComponent},
+  {path: 'detail-customer/:id', component: DetailCustomerComponent},
   {path: 'edit-customer/:id', component: EditCustomerComponent},
   {path: 'list-contract', component: ListContractComponent},
   {path: 'create-contract', component: CreateContractComponent}

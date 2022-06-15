@@ -11,88 +11,88 @@
     </div>
 
 
-    <div class="px-5 row">
-      <div class="col-2"></div>
-      <div class="col-8">
-        <form class="was-validated" action="/customer/save_edit" method="post">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10 bg-light p-5 shadow-lg rounded">
+        <form class="was-validated" [formGroup]="editFacilityForm" novalidate>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Sửa thông tin cho dịch vụ có Id là -></span>
-            <input type="hidden" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default" required>
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default0">Code dịch vụ</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default0" required>
+            <span class="input-group-text" id="inputGroup-sizing-default11">Id dịch vụ</span>
+            <input type="text" formControlName="id" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default11" required>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default1">Tên dịch vụ</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input type="text" formControlName="name" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default1" required>
+            <span class="alert-danger input-group-text"
+                  *ngIf="editFacilityForm.controls.name.hasError('pattern')">Sai format tên</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default32">Diện tích</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input type="text" formControlName="area" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default1" required>
+            <span class="alert-danger input-group-text"
+                  *ngIf="editFacilityForm.controls.area.hasError('pattern')">Không nhập số âm và chữ</span>
           </div>
-          <!--                <div class="input-group mb-3">-->
-          <!--                    <label for="exampleDataList" class="form-label"><span class="input-group-text">Diện tích</span></label>-->
-          <!--                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Gõ để tìm..." required>-->
-          <!--                    <datalist id="datalistOptions">-->
-          <!--                        <option value="Nữ" text="Nữ"></option>-->
-          <!--                        <option value="Nam" text="Nam"></option>-->
-          <!--                    </datalist>-->
-          <!--                </div>-->
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default3">Phí thuê</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input type="text" formControlName="cost" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default3" required>
+            <span class="alert-danger input-group-text"
+                  *ngIf="editFacilityForm.controls.cost.hasError('pattern')">Không nhập số âm và chữ</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default4">Số người max</span>
-            <input type="number" class="form-control" aria-label="Sizing example input"
+            <input type="text" formControlName="maxPeople"  class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default4" required>
+            <span class="alert-danger input-group-text"
+                  *ngIf="editFacilityForm.controls.maxPeople.hasError('pattern')">Không nhập số âm và chữ</span>
           </div>
           <div class="input-group mb-3">
-            <label for="exampleDataList" class="form-label"><span class="input-group-text">Loại dịch vụ</span></label>
-            <input class="form-control" list="datalistOptions1" id="exampleDataList" placeholder="Gõ để tìm..."
-                   required>
-            <datalist id="datalistOptions1">
-              <option value="San Francisco">
-              <option value="New York">
-              <option value="Seattle">
-              <option value="Los Angeles">
-              <option value="Chicago">
-            </datalist>
+            <label for="validationServer4" class="form-label"><span class="input-group-text">Loại dịch vụ</span></label>
+            <select class="form-select is-invalid" formControlName="type" id="validationServer4" aria-describedby="validationServer04Feedback"
+                    required>
+              <option selected value=""></option>
+              <option [ngValue]="'Villa'">Villa</option>
+              <option [ngValue]="'House'">House</option>
+              <option [ngValue]="'Room'">Room</option>
+            </select>
           </div>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default7">Kiểu thuê</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default7" required>
+            <label for="validationServer14" class="form-label"><span class="input-group-text">Loại dịch vụ</span></label>
+            <select class="form-select is-invalid" formControlName="rentType" id="validationServer14" aria-describedby="validationServer04Feedback"
+                    required>
+              <option selected value=""></option>
+              <option [ngValue]="'Year'">Year</option>
+              <option [ngValue]="'Month'">Month</option>
+              <option [ngValue]="'Day'">Day</option>
+            </select>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default47">Tiêu chuẩn</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input type="text" formControlName="standardRoom" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default7" required>
+            <span class="alert-danger input-group-text"
+                  *ngIf="editFacilityForm.controls.standardRoom.hasError('pattern')">Không nhập số âm và chữ</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default37">Tiện ích khác</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input type="text" formControlName="descriptionOtherConvenience" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default7" required>
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default27">Diện tích hồ bơi</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default7" required>
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default17">Số tầng</span>
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default7" required>
-          </div>
+          <!--          <div class="input-group mb-3">-->
+          <!--            <span class="input-group-text" id="inputGroup-sizing-default27">Diện tích hồ bơi</span>-->
+          <!--            <input type="text" class="form-control" aria-label="Sizing example input"-->
+          <!--                   aria-describedby="inputGroup-sizing-default7" required>-->
+          <!--          </div>-->
+          <!--          <div class="input-group mb-3">-->
+          <!--            <span class="input-group-text" id="inputGroup-sizing-default17">Số tầng</span>-->
+          <!--            <input type="text" class="form-control" aria-label="Sizing example input"-->
+          <!--                   aria-describedby="inputGroup-sizing-default7" required>-->
+          <!--          </div>-->
           <div class="text-center">
             <button type="submit" class="btn btn-primary position-relative">
-              Sửa thông tin dịch vụ
+              Tạo dịch vụ
               <span
                 class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
                     <span class="visually-hidden">New alerts</span>
@@ -101,7 +101,7 @@
           </div>
         </form>
       </div>
-      <div class="col-2"></div>
+      <div class="col-1"></div>
     </div>
   </div>
 </div>

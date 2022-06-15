@@ -13,35 +13,42 @@
 
     <div class="row">
       <div class="col-1"></div>
-      <div class="p-5 col-10 background">
-        <!--        <form class="was-validated" >-->
-        <form class="was-validated" [formGroup]="createCustomerForm" (ngSubmit)="console()" novalidate>
+      <div class="p-5 col-10 background shadow-lg rounded">
+        <form class="was-validated" [formGroup]="createCustomerForm" (ngSubmit)="create()" novalidate>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default20">Id</span>
+            <input type="text" formControlName="id" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default20" required>
+            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.id.hasError('required')">Không được để trống</span>
+          </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default0">Tên</span>
             <input type="text" formControlName="name" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default0" required>
             <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.name.hasError('pattern')">Không đúng format tên</span>
+            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.name.hasError('required')">Không được để trống</span>
           </div>
-
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default01">Mã khách</span>
             <input type="text" formControlName="code" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default0" required>
             <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.code.hasError('pattern')">Không đúng format mã</span>
+            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.code.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default1">Ngày sinh</span>
             <input type="date" formControlName="dateOfBirth" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default1" required>
+            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.dateOfBirth.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
-            <label for="validationServer04" class="form-label"><span class="input-group-text">Giới tính</span></label>
-            <select class="form-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback"
-                    required>
+            <label class="form-label"><span class="input-group-text">Giới tính</span></label>
+            <select class="form-select is-invalid" formControlName="gender" aria-describedby="validationServer04Feedback" required>
               <option selected value=""></option>
-              <option value="Nam">Nam</option>
-              <option value="Nữ">Nữ</option>
+              <option [ngValue]="'Nam'">Nam</option>
+              <option [ngValue]="'Nữ'">Nữ</option>
             </select>
+            <span class="alert-danger input-group-text span" *ngIf="createCustomerForm.controls.gender.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default3">CMND</span>
@@ -49,6 +56,7 @@
                    aria-describedby="inputGroup-sizing-default3" required>
             <span class="alert-danger input-group-text"
                   *ngIf="createCustomerForm.controls.idCardNumber.hasError('pattern')">9 hoặc 12 số</span>
+            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.idCardNumber.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default4">Số ĐT</span>
@@ -56,30 +64,34 @@
                    aria-describedby="inputGroup-sizing-default4" required>
             <span class="alert-danger input-group-text"
                   *ngIf="createCustomerForm.controls.numberPhone.hasError('pattern')">Không đúng format SDT</span>
+            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.numberPhone.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default6">Email</span>
             <input type="text" formControlName="email" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default6" required>
             <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.email.hasError('pattern')">Không đúng format email</span>
+            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.email.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default7">Địa chỉ</span>
             <input type="text" formControlName="address" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default7" required>
             <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.address.hasError('pattern')">Không đúng format địa chỉ</span>
+            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.address.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <label for="validationServer4" class="form-label"><span class="input-group-text">Loại khách</span></label>
-            <select class="form-select is-invalid" id="validationServer4" aria-describedby="validationServer04Feedback"
+            <select class="form-select is-invalid" formControlName="type" id="validationServer4" aria-describedby="validationServer04Feedback"
                     required>
               <option selected value=""></option>
-              <option value="Diamond">Diamond</option>
-              <option value="Platinium">Platinium</option>
-              <option value="Gold">Gold</option>
-              <option value="Silver">Silver</option>
-              <option value="Member">Member</option>
+              <option [ngValue]="'Diamond'">Diamond</option>
+              <option [ngValue]="'Platinium'">Platinium</option>
+              <option [ngValue]="'Gold'">Gold</option>
+              <option [ngValue]="'Silver'">Silver</option>
+              <option [ngValue]="'Member'">Member</option>
             </select>
+            <span class="alert-danger input-group-text span" *ngIf="createCustomerForm.controls.type.hasError('required')">Không được để trống</span>
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary position-relative">

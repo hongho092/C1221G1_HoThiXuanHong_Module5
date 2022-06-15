@@ -13,8 +13,7 @@ export class DetailComponent implements OnInit {
   detailWord: Dictionary;
 
   constructor(private dictionaryService: DictionaryService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private activatedRoute: ActivatedRoute) {
     activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const id = paramMap.get('id');
       if (id != null) {

@@ -21,7 +21,7 @@ export class CreateFacilityComponent implements OnInit {
       rentType: new FormControl(),
       standardRoom: new FormControl('', [Validators.pattern('^[1-9]{1}[0-9]*$')]),
       descriptionOtherConvenience: new FormControl()
-    });
+    }, Validators.required);
   }
 
   ngOnInit(): void {
