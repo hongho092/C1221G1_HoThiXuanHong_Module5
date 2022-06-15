@@ -9,8 +9,8 @@ import {TodoListComponent} from './todo/todo-list/todo-list.component';
 const routes: Routes = [
   {path: '', component: TodoListComponent},
   {path: 'todo-create', component: TodoCreateComponent},
-  {path: 'todo-edit', component: TodoEditComponent},
-  {path: 'todo-delete', component: TodoDeleteComponent},
+  {path: 'todo-edit/:id', component: TodoEditComponent},
+  {path: 'todo-delete/:id', component: TodoDeleteComponent},
 ];
 
 @NgModule({
