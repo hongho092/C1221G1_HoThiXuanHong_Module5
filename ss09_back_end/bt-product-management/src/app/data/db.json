@@ -1,0 +1,51 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "name": "IPhone X",
+      "price": 968000,
+      "description": "97%",
+      "category": "Điện tử"
+    },
+    {
+      "name": "IPhone 81",
+      "price": 7540000,
+      "description": "98%",
+      "category": {
+        "id": "4"
+      },
+      "id": 3
+    },
+    {
+      "name": "IPhone 11 Pro",
+      "price": 1895000,
+      "description": "New",
+      "category": {
+        "id": "4"
+      },
+      "id": 4
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Điện thoại"
+    },
+    {
+      "id": 3,
+      "name": "Điện tử"
+    },
+    {
+      "id": 4,
+      "name": "Thiết bị"
+    },
+    {
+      "name": "điện tử",
+      "id": 5
+    },
+    {
+      "name": "tỷeytredf",
+      "id": 6
+    }
+  ]
+}
