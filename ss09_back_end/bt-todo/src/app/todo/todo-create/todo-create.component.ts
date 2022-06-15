@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Todo} from '../../model/todo';
+import {TodoService} from '../../service/todo.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -9,29 +11,47 @@ import {Todo} from '../../model/todo';
 })
 export class TodoCreateComponent implements OnInit {
 
-  todos: Todo[] = [];
 
-  content = new FormControl();
+  todoForm: FormGroup = new FormGroup({
+    content: new FormControl(),
+  });
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private todoService: TodoService,
+              private router: Router) {
   }
 
-  toggleTodo(i: number) {
-    this.todos[i].complete = !this.todos[i].complete;
+  ngOnInit() {
   }
 
-  change() {
-    const value = this.content.value;
-    if (value) {
-      const todo: Todo = {
-        // id: _id++,
-        content: value,
-        complete: false
-      };
-      this.todos.push(todo);
-      this.content.reset();
-    }
+  submit() {
+    const todo = this.todoForm.value;
+    this.todoService.saveTodo(todo).subscribe(() => {
+    this.todoForm.reset();
+    alert('Tạo thành công');
+    }, e => {
+      console.log(e);
+    });
+    this.router.navigateByUrl('');
   }
 }
+
+//
+// categoryForm: FormGroup = new FormGroup({
+//   name: new FormControl(),
+// });
+//
+// constructor(private categoryService: CategoryService) {
+// }
+//
+// ngOnInit() {
+// }
+//
+// submit() {
+//   const category = this.categoryForm.value;
+//   this.categoryService.saveCategory(category).subscribe(() => {
+//     this.categoryForm.reset();
+//     alert('Tạo thành công');
+//   }, e => {
+//     console.log(e);
+//   });
+// }

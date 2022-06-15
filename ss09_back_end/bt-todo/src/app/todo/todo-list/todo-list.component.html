@@ -1,0 +1,19 @@
+<h2 class="text-center">
+  Todo App
+</h2>
+<a routerLink="/todo-create">Add</a><br><br>
+<div class="col-md-8 offset-md-2">
+<!--  <input type="text" class="form-control" [formControl]="content" (change)="change()">-->
+  <ul>
+    <li
+      (click)="toggleTodo(i)"
+      [class.complete]="todo.complete"
+      *ngFor="let todo of todos; index as i"
+    >
+      {{todo.content}}
+      <a [routerLink]="['todo-edit',todo.id]">Edit </a>
+      <a [routerLink]="['todo-delete',todo.id]">Delete</a>
+
+    </li>
+  </ul>
+</div>

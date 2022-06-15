@@ -1,1 +1,13 @@
-<p>todo-edit works!</p>
+<h1>Edit</h1>
+<form [formGroup]="todoForm" (ngSubmit)="updateTodo(id)">
+  <table>
+    <tr>
+      <td>Name work need to do:</td>
+      <td><input type="text" formControlName="content"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Edit</button></td>
+    </tr>
+  </table>
+</form>

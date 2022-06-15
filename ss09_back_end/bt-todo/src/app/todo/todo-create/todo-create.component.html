@@ -1,15 +1,17 @@
 <h2 class="text-center">
   Todo App
 </h2>
-<div class="col-md-8 offset-md-2">
-  <input type="text" class="form-control" [formControl]="content" (change)="change()">
-  <ul>
-    <li
-      (click)="toggleTodo(i)"
-      [class.complete]="todo.complete"
-      *ngFor="let todo of todos; index as i"
-    >
-      {{todo.content}}
-    </li>
-  </ul>
-</div>
+<form [formGroup]="todoForm" (ngSubmit)="submit()">
+  <table>
+    <tr>
+      <td>Work need to do:</td>
+      <td><input type="text" formControlName="content1"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button>Create</button>
+      </td>
+    </tr>
+  </table>
+</form>

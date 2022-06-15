@@ -7,18 +7,23 @@ import { TodoCreateComponent } from './todo/todo-create/todo-create.component';
 import { TodoEditComponent } from './todo/todo-edit/todo-edit.component';
 import { TodoDeleteComponent } from './todo/todo-delete/todo-delete.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {TodoListComponent} from './todo/todo-list/todo-list.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoCreateComponent,
     TodoEditComponent,
-    TodoDeleteComponent
+    TodoDeleteComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
