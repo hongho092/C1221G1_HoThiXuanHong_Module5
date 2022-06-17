@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{common/layout :: head_bootstrap}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{common/layout :: head_top}"></th:block>
+<th:block th:replace="~{common/layout :: head}"></th:block>
+<div class="text-center pb-4">
+    <h2 class="text-danger text-center pt-5 pb-2">DANH SÁCH KHÁCH HÀNG HIỆN TẠI ĐANG SỬ DỤNG DỊCH VỤ</h2>
+    <!--    <button class="btn btn-warning"><a href="/create" class="text-decoration-none">Create Product</a></button>-->
+    <p class="text-success pt-2" th:text="${mess}"></p>
+</div>
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-5"></div>-->
+<!--        <div class="col-7">-->
+<!--            <form class="d-flex" action="/service/list">-->
+<!--                <input class="form-control me-2" type="search" placeholder="Service Code" aria-label="Search"-->
+<!--                       name="search_code">-->
+<!--                <input class="form-control me-2" type="search" placeholder="Service Name" aria-label="Search"-->
+<!--                       name="search_name">-->
+<!--                <select name="search_category" class="form-select" aria-label="Default select example">-->
+<!--                    <option th:value="-1">Rent Type</option>-->
+<!--                    <option th:each="category : ${rentTypeList}" th:value="${category.rentTypeId}"-->
+<!--                            th:text="${category.rentTypeName}"></option>-->
+<!--                </select>-->
+<!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;        <div class="col-1"></div>&ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+<div class="p-5">
+    <table class="table table-striped text-center">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID hợp dồng</th>
+            <th scope="col">Tên khách hàng</th>
+            <th scope="col">Tên dịch vụ</th>
+            <th scope="col">Tiện ích khác</th>
+            <th scope="col">Giá dịch vụ</th>
+            <th scope="col">Tên dịch vụ đính kèm</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Tổng tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cus, hong : ${customerUsingNowPage}">
+                <td th:text="${hong.count}"></td>
+                <td th:text="${cus.contractId}"></td>
+                <td th:text="${cus.getCustomerName()}"></td>
+                <td th:text="${cus.getServiceName()}"></td>
+                <td th:text="${cus.getDescriptionOtherConvenience()}"></td>
+                <td th:text="${cus.getServiceCost()}"></td>
+                <td th:text="${cus.getAttachServiceName()}"></td>
+                <td th:text="${cus.getTotalQuantity()}"></td>
+                <td th:text="${cus.getTotalMoney()}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="col-11">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item">
+                <a class="page-link" th:if="${customerUsingNowPage.hasPrevious()}"
+                   th:href="@{/customer/list_customer_service_now/(page=${customerUsingNowPage.number - 1})}">Trang trước</a>
+            </li>
+            <li class="page-item"><a class="page-link"><span th:text="${customerUsingNowPage.number + 1}"></span></a></li>
+            <li class="page-item page-link">/</li>
+            <li class="page-item"><a class="page-link"><span th:text="${customerUsingNowPage.totalPages}"></span></a></li>
+            <li class="page-item">
+                <a class="page-link" th:if="${customerUsingNowPage.hasNext()}"
+                   th:href="@{/customer/list_customer_service_now/(page=${customerUsingNowPage.number + 1})}">Trang sau</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!--<div class="col-11">-->
+<!--    <nav aria-label="Page navigation example">-->
+<!--        <ul class="pagination justify-content-end">-->
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" th:if="${servicePage.hasPrevious()}"-->
+<!--                   th:href="@{/service/list/(page=${servicePage.number - 1}, key1=${searchName}, key2=${searchCode}, key3=${searchCategory})}">Previous</a>-->
+<!--            </li>-->
+<!--            &lt;!&ndash;            <li class="page-item"><span th:text="${productList.number + 1}"></span></li>&ndash;&gt;-->
+<!--            <li class="page-item"><a class="page-link"><span th:text="${servicePage.number + 1}"></span></a></li>-->
+<!--            <li class="page-item page-link">/</li>-->
+<!--            <li class="page-item"><a class="page-link"><span th:text="${servicePage.totalPages}"></span></a></li>-->
+<!--            &lt;!&ndash;            <li class="page-item"><span th:text="${productList.totalPages}"></span></li>&ndash;&gt;-->
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" th:if="${servicePage.hasNext()}"-->
+<!--                   th:href="@{/service/list/(page=${servicePage.number + 1}, key1=${searchName}, key2=${searchCode}, key3=${searchCategory})}">Next</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+<!--</div>-->
+
+
+<th:block th:replace="~{common/layout :: foot}"></th:block>
+<th:block th:replace="~{common/layout :: foot_bootstrap}"></th:block>
+</body>
+</html>

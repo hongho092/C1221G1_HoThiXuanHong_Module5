@@ -15,12 +15,12 @@
       <div class="col-1"></div>
       <div class="p-5 col-10 background shadow-lg rounded">
         <form class="was-validated" [formGroup]="createCustomerForm" (ngSubmit)="create()" novalidate>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default20">Id</span>
-            <input type="text" formControlName="id" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default20" required>
-            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.id.hasError('required')">Không được để trống</span>
-          </div>
+<!--          <div class="input-group mb-3">-->
+<!--            <span class="input-group-text" id="inputGroup-sizing-default20">Id</span>-->
+<!--            <input type="text" formControlName="id" class="form-control" aria-label="Sizing example input"-->
+<!--                   aria-describedby="inputGroup-sizing-default20" required>-->
+<!--            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.id.hasError('required')">Không được để trống</span>-->
+<!--          </div>-->
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default0">Tên</span>
             <input type="text" formControlName="name" class="form-control" aria-label="Sizing example input"
@@ -94,7 +94,7 @@
             <span class="alert-danger input-group-text span" *ngIf="createCustomerForm.controls.type.hasError('required')">Không được để trống</span>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary position-relative">
+            <button type="submit" [disabled]="!createCustomerForm.valid" class="btn btn-primary position-relative">
               Tạo khách hàng
               <span
                 class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">

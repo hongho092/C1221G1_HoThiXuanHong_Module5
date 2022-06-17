@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Access Denied</title>
+    <th:block th:replace="~{common/layout :: head_bootstrap}"></th:block>
+</head>
+
+<body>
+<th:block th:replace="~{common/layout :: head_top}"></th:block>
+<th:block th:replace="~{common/layout :: head}"></th:block>
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="height: 120px"></div>
+        <div class="col-12 text-center">
+            <h2>Hello</h2>
+
+            <h3 th:if="${message != null}" th:utext="${message}" style="color: red;"></h3>
+
+            <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+        </div>
+    </div>
+</div>
+
+
+<th:block th:replace="~{common/layout :: foot_bootstrap}"></th:block>
+
+</body>
+</html>

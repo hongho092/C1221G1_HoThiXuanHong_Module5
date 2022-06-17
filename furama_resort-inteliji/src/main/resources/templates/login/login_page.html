@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../common/css_login.css">
+    <th:block th:replace="~{common/layout :: head_bootstrap}"></th:block>
+
+    <style>
+        body {
+            background-image: url('https://scr.vn/wp-content/uploads/2020/07/H%C3%ACnh-n%E1%BB%81n-bi%E1%BB%83n-xanh-scaled.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+<th:block th:replace="~{common/layout :: head}"></th:block>
+<center>
+<!--<div th:if="${#request.getParameter('error') == 'true'}" ">-->
+<!--    Login Failed!!! Incorrect user or password-->
+<!--    Reason :-->
+<!--    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"-->
+<!--          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">-->
+<!--                Static summary-->
+<!--    </span>-->
+<!--</div>-->
+
+<h4 th:if="${#request.getParameter('error') == 'true'}" class="text-center text-danger pt-3">Login Failed!!! Incorrect user or password. Try again</h4>
+
+<div class="container pt-5 ">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form class="form-signin" name='f' th:action="@{/j_spring_security_check}" method='POST'>
+                <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOXRcYVOltx6AbMgTUMw6t4VlUbYbmm8WL7w&usqp=CAU" alt="" width="72"
+                     height="72">
+                <h1 class="h3 mb-3 font-weight-normal text-dark"><mark>Hãy đăng nhập</mark></h1>
+                <input type="text" name='username' class="form-control" placeholder="User Name" required><br>
+                <input type="password" name='password' class="form-control" placeholder="Password" required><br>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" id="remember-me" name="remember-me"> Nhớ tôi
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
+                <p class="mt-5 mb-3 text-muted">&copy; 2022-2025</p>
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+</center>
+
+<th:block th:replace="~{common/layout :: foot_bootstrap}"></th:block>
+</body>
+</html>

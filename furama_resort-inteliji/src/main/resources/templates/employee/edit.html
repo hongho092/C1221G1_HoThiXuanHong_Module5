@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EDIT EMPLOYEE</title>
+    <th:block th:replace="~{common/layout :: head_bootstrap}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{common/layout :: head_top}"></th:block>
+<th:block th:replace="~{common/layout :: head}"></th:block>
+<div class="text-center pb-4">
+    <h2 class="text-danger text-center pt-5 pb-2">SỬA THÔNG TIN NHÂN VIÊN</h2>
+<!--    <button class="btn btn-warning"><a href="/" class="text-decoration-none">Go List Product</a></button>-->
+</div>
+<div class="container">
+    <div class="px-5 row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form class="was-validated" action="/employee/save_edit" method="post" th:object="${employeeDto}">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Sửa thông tin cho nhân viên có ID là -> <th:block
+                            th:text="*{employeeId}"></th:block></span>
+                    <input type="hidden" th:field="*{employeeId}" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default0">Tên</span>
+                    <input type="text" th:field="*{employeeName}" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default0" required>
+                    <span class="input-group-text text-danger" th:if="${#fields.hasErrors('employeeName')}"
+                          th:errors="*{employeeName}"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default1">Ngày sinh</span>
+                    <input type="text" th:field="*{employeeBirthday}" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default1" required>
+                    <span class="input-group-text text-danger" th:if="${#fields.hasErrors('employeeBirthday')}"
+                          th:errors="*{employeeBirthday}"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default2">CMND</span>
+                    <input type="text" th:field="*{employeeIdCard}" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default2" required>
+                    <span class="input-group-text text-danger" th:if="${#fields.hasErrors('employeeIdCard')}"
+                          th:errors="*{employeeIdCard}"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default3">Lương</span>
+                    <input type="text" th:field="*{employeeSalary}" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default3" required>
+                    <span class="input-group-text text-danger" th:if="${#fields.hasErrors('employeeSalary')}"
+                          th:errors="*{employeeSalary}"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default4">Số ĐT</span>
+                    <input type="text" th:field="*{employeePhone}" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default4" required>
+                    <span class="input-group-text text-danger" th:if="${#fields.hasErrors('employeePhone')}"
+                          th:errors="*{employeePhone}"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default9">Email</span>
+                    <input type="text" th:field="*{employeeEmail}" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default9" required>
+                    <span class="input-group-text text-danger" th:if="${#fields.hasErrors('employeeEmail')}"
+                          th:errors="*{employeeEmail}"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default6">Địa chỉ</span>
+                    <input type="text" th:field="*{employeeAddress}" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default6" required>
+                    <span class="input-group-text text-danger" th:if="${#fields.hasErrors('employeeAddress')}"
+                          th:errors="*{employeeAddress}"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <label for="exampleDataList112" class="form-label"><span class="input-group-text">Trình độ</span></label>
+                    <input class="form-control" th:field="*{educationDegree}" list="datalistOptions112" id="exampleDataList112" placeholder="Gõ để tìm..." required>
+                    <datalist id="datalistOptions112">
+                        <option th:each="category : ${educationDegreeList}" th:value="${category.educationDegreeId}"
+                                th:text="${category.educationDegreeName}"></option>
+                    </datalist>
+<!--                    <span class="input-group-text" id="inputGroup-sizing-default5">Trình độ</span>-->
+<!--                    <select th:field="*{educationDegree}" class="form-select" aria-label="Default select example" required>-->
+<!--                        <option value=""></option>-->
+<!--                        <option th:each="category : ${educationDegreeList}" th:value="${category.educationDegreeId}"-->
+<!--                                th:text="${category.educationDegreeName}"></option>-->
+<!--                    </select>-->
+                </div>
+                <div class="input-group mb-3">
+                    <label for="exampleDataList12" class="form-label"><span class="input-group-text">Vị trí</span></label>
+                    <input class="form-control" th:field="*{position}" list="datalistOptions12" id="exampleDataList12" placeholder="Gõ để tìm..." required>
+                    <datalist id="datalistOptions12">
+                        <option th:each="category : ${positionList}" th:value="${category.positionId}"
+                                th:text="${category.positionName}"></option>
+                    </datalist>
+<!--                    <span class="input-group-text" id="inputGroup-sizing-default7">Vị trí</span>-->
+<!--                    <select th:field="*{position}" class="form-select" aria-label="Default select example" required>-->
+<!--                        <option value=""></option>-->
+<!--                        <option th:each="category : ${positionList}" th:value="${category.positionId}"-->
+<!--                                th:text="${category.positionName}"></option>-->
+<!--                    </select>-->
+                </div>
+                <div class="input-group mb-3">
+                    <label for="exampleDataList1" class="form-label"><span class="input-group-text">Bộ phận</span></label>
+                    <input class="form-control" th:field="*{division}" list="datalistOptions1" id="exampleDataList1" placeholder="Gõ để tìm..." required>
+                    <datalist id="datalistOptions1">
+                        <option th:each="category : ${divisionList}" th:value="${category.divisionId}"
+                                th:text="${category.divisionName}"></option>
+                    </datalist>
+<!--                    <span class="input-group-text" id="inputGroup-sizing-default8">Bộ phận</span>-->
+<!--                    <select th:field="*{division}" class="form-select" aria-label="Default select example" required>-->
+<!--                        <option value=""></option>-->
+<!--                        <option th:each="category : ${divisionList}" th:value="${category.divisionId}"-->
+<!--                                th:text="${category.divisionName}"></option>-->
+<!--                    </select>-->
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary position-relative">
+                        Xác nhận sửa
+                        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                    <span class="visually-hidden">New alerts</span>
+                    </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+<th:block th:replace="~{common/layout :: foot}"></th:block>
+<th:block th:replace="~{common/layout :: foot_bootstrap}"></th:block>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{common/layout :: head_bootstrap}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{common/layout :: head_top}"></th:block>
+<th:block th:replace="~{common/layout :: head}"></th:block>
+<div class="text-center pb-4">
+    <h2 class="text-danger text-center pt-5 pb-2">TẠO HỢP ĐỒNG CHI TIẾT</h2>
+    <!--    <button class="btn btn-warning"><a href="/" class="text-decoration-none">Go List Product</a></button>-->
+</div>
+<div class="container">
+    <div class="px-5 row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form class="was-validated" action="/contract_detail/save" method="post" th:object="${contractDetailDto}" novalidate>
+                <div class="input-group mb-3">
+                    <label for="exampleDataList1" class="form-label"><span class="input-group-text">Id hợp đồng</span></label>
+                    <input class="form-control" th:field="*{contract}" list="datalistOptions1" id="exampleDataList1" placeholder="Gõ để tìm..." required>
+                    <datalist id="datalistOptions1">
+                        <option th:each="category : ${contractList}" th:value="${category.contractId}"
+                                th:text="${category.contractId}"></option>
+                    </datalist>
+                </div>
+                <div class="input-group mb-3">
+                    <label for="exampleDataList" class="form-label"><span class="input-group-text">Tên dịch vụ đính kèm</span></label>
+                    <input class="form-control" th:field="*{attachService}" list="datalistOptions" id="exampleDataList" placeholder="Gõ để tìm..." required>
+                    <datalist id="datalistOptions">
+<!--                        <option value=""></option>-->
+                        <option th:each="category : ${attachServiceList}" th:value="${category.attachServiceId}"
+                                th:text="${category.attachServiceName}"></option>
+                    </datalist>
+                </div>
+                <div class="input-group mb-3">
+                    <label for="a3"><span class="input-group-text" id="inputGroup-sizing-default2">Số lượng</span></label>
+                    <input type="text" th:field="*{quantity}" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default2" id="a3" required>
+                    <span class="input-group-text text-danger" th:if="${#fields.hasErrors('quantity')}"
+                          th:errors="*{quantity}"></span>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary position-relative">
+                        Tạo hợp đồng chi tiết
+                        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                    <span class="visually-hidden">New alerts</span>
+                    </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<th:block th:replace="~{common/layout :: foot}"></th:block>
+<th:block th:replace="~{common/layout :: foot_bootstrap}"></th:block>
+</body>
+</html>

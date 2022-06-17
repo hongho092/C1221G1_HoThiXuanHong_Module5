@@ -14,12 +14,11 @@
     <div class="row">
       <div class="col-1"></div>
       <div class="col-10 background p-5 shadow-lg rounded">
-        <form class="was-validated" [formGroup]="createFacilityForm" (ngSubmit)="console()">
+        <form class="was-validated" [formGroup]="createFacilityForm" (ngSubmit)="create()">
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default11">Id dịch vụ</span>
-            <input type="text" formControlName="id" class="form-control" aria-label="Sizing example input"
+<!--            <span class="input-group-text" id="inputGroup-sizing-default11">Id dịch vụ</span>-->
+            <input type="hidden" formControlName="id" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default11" required>
-            <span class="alert-danger input-group-text" *ngIf="createFacilityForm.controls.id.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default1">Tên dịch vụ</span>
@@ -69,9 +68,10 @@
             <select class="form-select is-invalid" formControlName="rentType" id="validationServer14" aria-describedby="validationServer04Feedback"
                     required>
               <option selected value=""></option>
-              <option [ngValue]="'Year'">Year</option>
-              <option [ngValue]="'Month'">Month</option>
-              <option [ngValue]="'Day'">Day</option>
+              <option *ngFor="let rentType of rentTypes" [ngValue]="rentType">{{rentType.rentType}}</option>
+<!--              <option [ngValue]="'Year'">Year</option>-->
+<!--              <option [ngValue]="'Month'">Month</option>-->
+<!--              <option [ngValue]="'Day'">Day</option>-->
             </select>
             <span class="alert-danger input-group-text span" *ngIf="createFacilityForm.controls.rentType.hasError('required')">Không được để trống</span>
           </div>

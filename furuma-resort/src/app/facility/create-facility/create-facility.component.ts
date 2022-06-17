@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FacilityService} from '../facility.service';
+import {Router} from '@angular/router';
+import {RentType} from '../../model/rent-type';
 
 @Component({
   selector: 'app-create-facility',
@@ -10,9 +13,12 @@ export class CreateFacilityComponent implements OnInit {
 
   createFacilityForm: FormGroup;
 
-  constructor() {
+  rentTypes: RentType[];
+
+  constructor(private facilityService: FacilityService,
+              private router: Router) {
     this.createFacilityForm = new FormGroup({
-      id: new FormControl(),
+      // id: new FormControl(),
       name: new FormControl('', [Validators.pattern('^([A-Z][a-z]+ ?)*$')]),
       area: new FormControl('', [Validators.pattern('^[1-9]{1}[0-9]*$')]),
       cost: new FormControl('', [Validators.pattern('^[1-9]{1}[0-9]*$')]),
@@ -25,9 +31,19 @@ export class CreateFacilityComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.facilityService.getAllRentType().subscribe(rentType => {
+      this.rentTypes = rentType;
+    });
   }
 
-  console() {
-    console.log(this.createFacilityForm.value);
+  create() {
+    if (this.createFacilityForm.valid) {
+      const facility = this.createFacilityForm.value;
+      this.facilityService.saveFacility(facility).subscribe(() => {
+        alert('Tạo dịch vụ thành công');
+        this.createFacilityForm.reset();
+        this.router.navigateByUrl('facility/list');
+      }, e => console.log(e));
+    }
   }
 }

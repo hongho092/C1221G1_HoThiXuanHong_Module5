@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{common/layout :: head_bootstrap}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{common/layout :: head_top}"></th:block>
+<th:block th:replace="~{common/layout :: head}"></th:block>
+<div class="text-center pb-4">
+    <h2 class="text-danger text-center pt-5 pb-2">LOẠI KHÁCH HÀNG</h2>
+    <p class="text-success pt-2" th:text="${mess}"></p>
+<!--    <button class="btn btn-warning"><a href="/" class="text-decoration-none">Go List Product</a></button>-->
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <table class="table text-center">
+                <tr>
+                    <th class="col-6">Id loại khách</th>
+                    <th class="col-3">Loại khách hàng</th>
+                </tr>
+                <tr th:each="customerType : ${customerTypeList}">
+                    <td class="col-6" th:text="${customerType.customerTypeId}"></td>
+                    <td class="col-6" th:text="${customerType.customerTypeName}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+<div class="container pt-5">
+    <div class="px-5 row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form action="/customer/save_customer_type" method="get" th:object="${customerType}">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default1">Loại khách hàng</span>
+                    <input type="text" th:field="*{customerTypeName}" class="form-control" aria-label="Sizing example input"
+                           aria-describedby="inputGroup-sizing-default1" required>
+                    <!--                    <span class="input-group-text text-danger" th:if="${#fields.hasErrors('name')}"-->
+                    <!--                          th:errors="*{name}"></span>-->
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary position-relative">
+                        Tạo loại khách
+                        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                    <span class="visually-hidden">New alerts</span>
+                    </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+
+<th:block th:replace="~{common/layout :: foot}"></th:block>
+<th:block th:replace="~{common/layout :: foot_bootstrap}"></th:block>
+</body>
+</html>

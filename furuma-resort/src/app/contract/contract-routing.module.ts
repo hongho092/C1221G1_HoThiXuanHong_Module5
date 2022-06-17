@@ -5,8 +5,8 @@ import {CreateContractComponent} from './create-contract/create-contract.compone
 
 
 const routes: Routes = [
-  {path: 'contract/list', component: ListContractComponent},
-  {path: 'contract/create', component: CreateContractComponent},
+  {path: 'list', component: ListContractComponent},
+  {path: 'create', component: CreateContractComponent},
 ];
 
 @NgModule({

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DETAIL EMPlOYEE</title>
+    <th:block th:replace="~{common/layout :: head_bootstrap}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{common/layout :: head_top}"></th:block>
+<th:block th:replace="~{common/layout :: head}"></th:block>
+<div class="text-center pb-4">
+    <h2 class="text-danger text-center pt-5 pb-2">THÔNG TIN CHI TIẾT</h2>
+<!--    <button class="btn btn-warning"><a href="/" class="text-decoration-none">Go List Product</a></button>-->
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <table class="table text-center">
+                <tr>
+                    <th class="col-6">ID</th>
+                    <td class="col-6" th:text="${employee.employeeId}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Tên</th>
+                    <td class="col-6" th:text="${employee.employeeName}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Ngày sinh</th>
+                    <td class="col-6" th:text="${employee.employeeBirthday}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">CMND</th>
+                    <td class="col-6" th:text="${employee.employeeIdCard}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Lương</th>
+                    <td class="col-6" th:text="${employee.employeeSalary}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Số ĐT</th>
+                    <td class="col-6" th:text="${employee.employeePhone}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Email</th>
+                    <td class="col-6" th:text="${employee.employeeEmail}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Địa chỉ</th>
+                    <td class="col-6" th:text="${employee.employeeAddress}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Trình độ</th>
+                    <td class="col-6" th:text="${employee.educationDegree.educationDegreeName}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Bộ phận</th>
+                    <td class="col-6" th:text="${employee.position.positionName}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Vị trí</th>
+                    <td class="col-6" th:text="${employee.division.divisionName}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+<div class="px-5 col">
+
+</div>
+<th:block th:replace="~{common/layout :: foot}"></th:block>
+<th:block th:replace="~{common/layout :: foot_bootstrap}"></th:block>
+</body>
+</html>

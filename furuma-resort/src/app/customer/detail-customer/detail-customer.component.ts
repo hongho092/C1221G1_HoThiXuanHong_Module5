@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {CustomerService} from '../customer.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Customer} from '../../model/customer';
+import {Observable} from 'rxjs';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-detail-customer',
@@ -17,12 +19,13 @@ export class DetailCustomerComponent implements OnInit {
     activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const id = paramMap.get('id');
       if (id != null) {
-        this.detailCustomer = customerService.findById(Number(id));
+        this.customerService.findById(Number(id)).subscribe(customer => {
+          this.detailCustomer = customer;
+        });
       }
     });
   }
 
   ngOnInit(): void {
   }
-
 }

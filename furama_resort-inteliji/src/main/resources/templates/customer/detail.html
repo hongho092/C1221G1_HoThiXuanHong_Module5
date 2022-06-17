@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{common/layout :: head_bootstrap}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{common/layout :: head_top}"></th:block>
+<th:block th:replace="~{common/layout :: head}"></th:block>
+<div class="text-center pb-4">
+    <h2 class="text-danger text-center pt-5 pb-2">THÔNG TIN CHI TIẾT</h2>
+<!--    <button class="btn btn-warning"><a href="/" class="text-decoration-none">Go List Product</a></button>-->
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <table class="table text-center">
+                <tr>
+                    <th class="col-6">ID khách hàng</th>
+                    <td class="col-6" th:text="${customer.customerId}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Code</th>
+                    <td class="col-6" th:text="${customer.customerCode}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Tên</th>
+                    <td class="col-6" th:text="${customer.customerName}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Ngày sinh</th>
+                    <td class="col-6" th:text="${customer.customerBirthday}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Giới tính</th>
+                    <td class="col-6" th:text="${customer.customerGender}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">CMND</th>
+                    <td class="col-6" th:text="${customer.customerIdCard}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Số ĐT</th>
+                    <td class="col-6" th:text="${customer.customerPhone}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Email</th>
+                    <td class="col-6" th:text="${customer.customerEmail}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Địa chỉ</th>
+                    <td class="col-6" th:text="${customer.customerAddress}"></td>
+                </tr>
+                <tr>
+                    <th class="col-6">Loại khách</th>
+                    <td class="col-6" th:text="${customer.customerType.customerTypeName}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+<div class="px-5 col">
+
+</div>
+<th:block th:replace="~{common/layout :: foot}"></th:block>
+<th:block th:replace="~{common/layout :: foot_bootstrap}"></th:block>
+</body>
+</html>

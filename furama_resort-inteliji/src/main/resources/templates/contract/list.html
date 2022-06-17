@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{common/layout :: head_bootstrap}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{common/layout :: head_top}"></th:block>
+<th:block th:replace="~{common/layout :: head}"></th:block>
+<div class="text-center pb-4">
+    <h2 class="text-danger text-center pt-5 pb-2">DANH SÁCH HỢP DỒNG</h2>
+    <!--    <button class="btn btn-warning"><a href="/create" class="text-decoration-none">Create Product</a></button>-->
+    <p class="text-success pt-2" th:text="${mess}"></p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4">
+            <form class="d-flex" action="#">
+                <input class="form-control me-2" type="search" placeholder="Dịch vụ" aria-label="Search"
+                       name="search_code">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+        <!--        <div class="col-1"></div>-->
+    </div>
+</div>
+<div class="p-5">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID hợp đồng</th>
+            <th scope="col">Mã dịch vụ</th>
+            <th scope="col">Ngày bắt đầu</th>
+            <th scope="col">Ngày kết thúc</th>
+            <th scope="col">Tiền đặt cọc</th>
+            <th scope="col">Tổng tiền</th>
+            <th scope="col">Nhân viên tạo hợp đồng</th>
+            <th scope="col">Hợp đồng cho khách hàng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contract, hong : ${contractPage}">
+            <td th:text="${hong.count}"></td>
+            <td th:text="${contract.contractId}"></td>
+            <td th:text="${contract.service.serviceCode}"></td>
+            <td th:text="${contract.contractStartDate}"></td>
+            <td th:text="${contract.contractEndDate}"></td>
+            <td th:text="${contract.contractDeposit}"></td>
+            <td th:text="${contract.contractTotalMoney}"></td>
+            <td th:text="${contract.employee.employeeName}"></td>
+            <td th:text="${contract.customer.customerName}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="col-11">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item">
+                <a class="page-link" th:if="${contractPage.hasPrevious()}"
+                   th:href="@{/contract/list/(page=${contractPage.number - 1})}">Trang trước</a>
+            </li>
+            <!--            <li class="page-item"><span th:text="${productList.number + 1}"></span></li>-->
+            <li class="page-item"><a class="page-link"><span th:text="${contractPage.number + 1}"></span></a></li>
+            <li class="page-item page-link">/</li>
+            <li class="page-item"><a class="page-link"><span th:text="${contractPage.totalPages}"></span></a></li>
+            <!--            <li class="page-item"><span th:text="${productList.totalPages}"></span></li>-->
+            <li class="page-item">
+                <a class="page-link" th:if="${contractPage.hasNext()}"
+                   th:href="@{/contract/list/(page=${contractPage.number + 1})}">Trang sau</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+<th:block th:replace="~{common/layout :: foot}"></th:block>
+<th:block th:replace="~{common/layout :: foot_bootstrap}"></th:block>
+</body>
+</html>

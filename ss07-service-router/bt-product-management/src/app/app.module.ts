@@ -1,28 +1,45 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ProductListComponent } from './product/product-list/product-list.component';
-import { ProductCreateComponent } from './product/product-create/product-create.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import { ProductEditComponent } from './product/product-edit/product-edit.component';
-import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {SharedModule} from "./shared/share.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProductListComponent,
-    ProductCreateComponent,
-    ProductEditComponent,
-    ProductDeleteComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
+
+
+
+// declarations: [
+//   AppComponent,
+//   ProductListComponent,
+//   ProductCreateComponent,
+//   ProductEditComponent,
+//   ProductDeleteComponent,
+//   CategoryListComponent,
+//   CategoryEditComponent,
+//   CategoryCreateComponent,
+//   CategoryDeleteComponent,
+//   NavBarComponent
+// ],
+//   imports: [
+//   BrowserModule,
+//   AppRoutingModule,
+//   ReactiveFormsModule,
+//   HttpClientModule
+// ],
+//   providers: [],
+//   bootstrap: [AppComponent]
+// })

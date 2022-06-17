@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{common/layout :: head_bootstrap}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{common/layout :: head_top}"></th:block>
+<th:block th:replace="~{common/layout :: head}"></th:block>
+<div class="text-center pb-4">
+    <h2 class="text-danger text-center pt-5 pb-2">DANH SÁCH HỢP ĐỒNG CHI TIẾT</h2>
+    <!--    <button class="btn btn-warning"><a href="/create" class="text-decoration-none">Create Product</a></button>-->
+    <p class="text-success pt-2" th:text="${mess}"></p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4">
+            <form class="d-flex" action="#">
+                <input class="form-control me-2" type="search" placeholder="Dich vụ" aria-label="Search"
+                       name="search_code">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+        <!--        <div class="col-1"></div>-->
+    </div>
+</div>
+<div class="p-5">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID hợp đông chi tiết</th>
+            <th scope="col">Ngày bắt đầu</th>
+            <th scope="col">Ngày kết thúc</th>
+            <th scope="col">Tên dịch vụ đính kèm</th>
+            <th scope="col">Số lượng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contract, hong : ${contractDetailPage}">
+            <td th:text="${hong.count}"></td>
+            <td th:text="${contract.contractDetailId}"></td>
+            <td th:text="${contract.contract.contractStartDate}"></td>
+            <td th:text="${contract.contract.contractEndDate}"></td>
+            <td th:text="${contract.attachService.attachServiceName}"></td>
+            <td th:text="${contract.quantity}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="col-11">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item">
+                <a class="page-link" th:if="${contractDetailPage.hasPrevious()}"
+                   th:href="@{/contract_detail/list/(page=${contractDetailPage.number - 1})}">Trang trước</a>
+            </li>
+            <!--            <li class="page-item"><span th:text="${productList.number + 1}"></span></li>-->
+            <li class="page-item"><a class="page-link"><span th:text="${contractDetailPage.number + 1}"></span></a></li>
+            <li class="page-item page-link">/</li>
+            <li class="page-item"><a class="page-link"><span th:text="${contractDetailPage.totalPages}"></span></a></li>
+            <!--            <li class="page-item"><span th:text="${productList.totalPages}"></span></li>-->
+            <li class="page-item">
+                <a class="page-link" th:if="${contractDetailPage.hasNext()}"
+                   th:href="@{/contract_detail/list/(page=${contractDetailPage.number + 1})}">Trang sau</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+<th:block th:replace="~{common/layout :: foot}"></th:block>
+<th:block th:replace="~{common/layout :: foot_bootstrap}"></th:block>
+</body>
+</html>

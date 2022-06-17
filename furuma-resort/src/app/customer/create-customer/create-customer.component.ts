@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import DateTimeFormat = Intl.DateTimeFormat;
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../customer.service';
 import {Router} from '@angular/router';
 
@@ -16,7 +15,7 @@ export class CreateCustomerComponent implements OnInit {
   constructor(private customerService: CustomerService,
               private router: Router) {
     this.createCustomerForm = new FormGroup({
-      id: new FormControl(),
+      // id: new FormControl(),
       code: new FormControl('', [Validators.pattern('^KH-[0-9]{4}$')]),
       name: new FormControl('', [Validators.pattern('^([A-Z][a-z]+ ?)*$')]),
       gender: new FormControl(),
@@ -32,9 +31,13 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   create() {
-    const customer = this.createCustomerForm.value;
-    this.customerService.saveCustomer(customer);
-    this.createCustomerForm.reset();
-    this.router.navigateByUrl('list-customer');
+    if (this.createCustomerForm.valid) {
+      const customer = this.createCustomerForm.value;
+      this.customerService.saveCustomer(customer).subscribe(() => {
+        alert('Tạo khách hàng thành công');
+        this.createCustomerForm.reset();
+        this.router.navigateByUrl('customer/list');
+      }, e => console.log(e));
+    }
   }
 }

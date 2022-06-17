@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-6">
         <div class="section_title text-center mb_70">
-          <h3>SỬA THÔNG TIN DỊCH VỤ</h3>
+          <h1 class="font-text text-danger">Sửa Thông Tin Dịch Vụ</h1>
           <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf
             moon beard words.</p>
         </div>
@@ -14,12 +14,12 @@
     <div class="row">
       <div class="col-1"></div>
       <div class="col-10 bg-light p-5 shadow-lg rounded">
-        <form class="was-validated" [formGroup]="editFacilityForm" novalidate>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default11">Id dịch vụ</span>
-            <input type="text" formControlName="id" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default11" required>
-          </div>
+        <form class="was-validated" [formGroup]="editFacilityForm" (ngSubmit)="editFacility(id)" novalidate>
+<!--          <div class="input-group mb-3">-->
+<!--            <span class="input-group-text" id="inputGroup-sizing-default11">Id dịch vụ</span>-->
+<!--            <input type="text" formControlName="id" class="form-control" aria-label="Sizing example input"-->
+<!--                   aria-describedby="inputGroup-sizing-default11" required>-->
+<!--          </div>-->
           <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default1">Tên dịch vụ</span>
             <input type="text" formControlName="name" class="form-control" aria-label="Sizing example input"
@@ -59,13 +59,14 @@
             </select>
           </div>
           <div class="input-group mb-3">
-            <label for="validationServer14" class="form-label"><span class="input-group-text">Loại dịch vụ</span></label>
+            <label for="validationServer14" class="form-label"><span class="input-group-text">Kiểu thuê</span></label>
             <select class="form-select is-invalid" formControlName="rentType" id="validationServer14" aria-describedby="validationServer04Feedback"
-                    required>
+                    required [compareWith]="equals">
               <option selected value=""></option>
-              <option [ngValue]="'Year'">Year</option>
-              <option [ngValue]="'Month'">Month</option>
-              <option [ngValue]="'Day'">Day</option>
+              <option *ngFor="let rentType of rentTypes" [ngValue]="rentType">{{rentType.rentType}}</option>
+<!--              <option [ngValue]="'Year'">Year</option>-->
+<!--              <option [ngValue]="'Month'">Month</option>-->
+<!--              <option [ngValue]="'Day'">Day</option>-->
             </select>
           </div>
           <div class="input-group mb-3">
@@ -80,19 +81,9 @@
             <input type="text" formControlName="descriptionOtherConvenience" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default7" required>
           </div>
-          <!--          <div class="input-group mb-3">-->
-          <!--            <span class="input-group-text" id="inputGroup-sizing-default27">Diện tích hồ bơi</span>-->
-          <!--            <input type="text" class="form-control" aria-label="Sizing example input"-->
-          <!--                   aria-describedby="inputGroup-sizing-default7" required>-->
-          <!--          </div>-->
-          <!--          <div class="input-group mb-3">-->
-          <!--            <span class="input-group-text" id="inputGroup-sizing-default17">Số tầng</span>-->
-          <!--            <input type="text" class="form-control" aria-label="Sizing example input"-->
-          <!--                   aria-describedby="inputGroup-sizing-default7" required>-->
-          <!--          </div>-->
           <div class="text-center">
             <button type="submit" class="btn btn-primary position-relative">
-              Tạo dịch vụ
+              Sửa dịch vụ
               <span
                 class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
                     <span class="visually-hidden">New alerts</span>
