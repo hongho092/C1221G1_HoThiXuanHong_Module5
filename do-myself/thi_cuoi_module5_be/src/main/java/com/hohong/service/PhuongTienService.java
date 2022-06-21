@@ -38,4 +38,9 @@ public class PhuongTienService implements IPhuongTienService{
     public PhuongTien findById(int id) {
         return phuongTienRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public List<PhuongTien> findAllSearch(String search) {
+        return phuongTienRepository.findAllByLoaiXeContaining(search);
+    }
 }

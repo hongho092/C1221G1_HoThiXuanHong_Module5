@@ -50,4 +50,8 @@ export class PhuongTienService {
   deletePhuongTien(id: number): Observable<PhuongTien> {
     return this.http.delete<PhuongTien>(`${API_URL1}/delete?id=${id}`);
   }
+
+  searchPhuongTien(search: string): Observable<PhuongTien[]> {
+    return this.http.get<PhuongTien[]>(`${API_URL1}/search?search=${search}`);
+  }
 }

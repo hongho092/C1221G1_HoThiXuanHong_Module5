@@ -15,4 +15,6 @@ public interface IPhuongTienService {
     void deleteById(int id);
 
     PhuongTien findById(int id);
+
+    List<PhuongTien> findAllSearch(String search);
 }

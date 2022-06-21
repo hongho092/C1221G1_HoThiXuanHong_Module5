@@ -3,8 +3,13 @@
 
 <div class="container text-center">
   <div class="row">
-    <div class="col-10"></div>
-    <div class="col-2"><button class="btn btn-primary">Tạo mới</button></div>
+    <div class="col-7"></div>
+    <div class="col-4">
+      <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="search()">
+        <input class="form-control me-2" type="text" formControlName="search" placeholder="Nhập loại xe để tìm" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Tìm</button>
+      </form>
+    </div>
   </div>
 
   <div class="row">

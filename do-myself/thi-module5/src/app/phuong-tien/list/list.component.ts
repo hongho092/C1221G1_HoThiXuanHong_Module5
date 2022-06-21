@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PhuongTien} from '../../model/phuong-tien';
 import {PhuongTienService} from '../../service/phuong-tien.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-list',
@@ -17,7 +18,13 @@ export class ListComponent implements OnInit {
 
   p = 0;
 
-  constructor(private phuongTienService: PhuongTienService) {}
+  searchForm: FormGroup;
+
+  constructor(private phuongTienService: PhuongTienService) {
+    this.searchForm = new FormGroup({
+      search: new FormControl()
+    });
+  }
 
   ngOnInit(): void {
     this.phuongTienService.getAll().subscribe(phuongTiens => {
@@ -37,4 +44,10 @@ export class ListComponent implements OnInit {
     }, e => console.log(e));
   }
 
+  search() {
+    console.log(this.searchForm.value.search);
+    this.phuongTienService.searchPhuongTien(this.searchForm.value.search).subscribe(phuongTiens => {
+      this.phuongTiens = phuongTiens;
+    });
+  }
 }

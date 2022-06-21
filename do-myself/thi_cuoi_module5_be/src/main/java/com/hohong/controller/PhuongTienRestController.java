@@ -31,15 +31,6 @@ public class PhuongTienRestController {
     @Autowired
     private IDiaDiemService diaDiemService;
 
-//    @GetMapping(value = "/list")
-//    public ResponseEntity<Page<PhuongTien>> getPagePhuongTien(@PageableDefault(value = 3) Pageable pageable) {
-//        Page<PhuongTien> phuongTienPage = phuongTienService.findAll(pageable);
-//        if(!phuongTienPage.hasContent()) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        return new ResponseEntity<>(phuongTienPage, HttpStatus.OK);
-//    }
-
     @GetMapping(value = "/list")
     public ResponseEntity<List<PhuongTien>> getPagePhuongTien() {
         List<PhuongTien> phuongTienPage = phuongTienService.findAll();
@@ -95,6 +86,15 @@ public class PhuongTienRestController {
         }
         phuongTienService.save(phuongTien);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "search")
+    public ResponseEntity<List<PhuongTien>> searchPhuongTien(@RequestParam String search) {
+        List<PhuongTien> phuongTienPage = phuongTienService.findAllSearch(search);
+        if(phuongTienPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(phuongTienPage, HttpStatus.OK);
     }
 
 }
