@@ -1,0 +1,59 @@
+ng new
+ 
+ng g i model/
+
+ng g s service/
+
+(data -> db.json)
+npm i json-server
+json-server --watch db.json
+
+(phân trang)
+npm install ngx-pagination --save -> trong package.json thành 5.x.x
+
+(header & footer)
+
+
+http://localhost:3000/hopDongs?_sort=gia&_order=asc
+http://localhost:3000/hopDongs?_sort=ngayBatDau&_order=asc
+
+http://localhost:3000/hopDongs?_page=1&_limit=2 (id = 1 & 2)
+http://localhost:3000/hopDongs?_page=2&_limit=2 (id = 3 & 4)
+
+http://localhost:3000/hopDongs?id_ne=2 -> loại trừ pt có id=2
+
+http://localhost:3000/hopDongs?maNguoiBan_like=MB-4553 -> tìm gần giống theo thuộc tính
+
+
+$ json-server index.js
+// index.js
+module.exports = () => {
+  const data = { users: [] }
+  // Create 1000 users
+  for (let i = 0; i < 1000; i++) {
+    data.users.push({ id: i, name: `user${i}` })
+  }
+  return data
+}
+
+lấy theo giá trị đúng
+GET /posts?title=json-server&author=typicode
+GET /posts?id=1&id=2
+GET /comments?author.name=typicode
+
+lấy theo giá trị gần đúng
+http://localhost:3000/hopDongs?gia_gte=2&gia_lte=4
+  (có thể nhập chỉ http://localhost:3000/hopDongs?gia_gte=2 "bắt đầu từ 2 -> hết"
+               hay http://localhost:3000/hopDongs?gia_lte=4 "bắt đầu từ đầu -> 4")
+trong trường hợp có cả gte và lte thì chỉ có lte là được quyền không có giá trị, nếu gte mà không có giá trị thì không được.
+
+
+http://localhost:3000/hopDongs?${searchLoaiMa}_like=${searchMa}&diaChi_like=${searchAddress}&${searchKieuNgay}_gte=${searchDateS}&${searchKieuNgay}_lte=${searchDateE}&_sort=gia&_order=${searchSortGia}
+
+http://localhost:3000/hopDongs?maDat_like=MD-1234&diaChi_like=code&ngayBatDau_gte=2019-01-01&ngayBatDau_lte=2022-01-01&_sort=gia&_order=${searchSortGia}
+
+http://localhost:3000/hopDongs?maDat_like=MD-1234&diaChi_like=code&ngayBatDau_gte=2019-01-01&ngayBatDau_lte=2020-01-01&_sort=gia&_order=desc
+
+http://localhost:3000/hopDongs?maDat_like=&diaChi_like=code
+
+

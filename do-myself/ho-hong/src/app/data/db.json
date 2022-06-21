@@ -1,0 +1,39 @@
+{
+  "hopDongs": [
+    {
+      "id": 1,
+      "maDat": "MD-1234",
+      "maNguoiBan": "MB-4563",
+      "ngayBatDau": "2019/05/20",
+      "ngayKetThuc": "2019/05/22",
+      "diaChi": "typicode",
+      "gia": "1",
+      "category": {
+        "id": 2,
+        "category": "Dat"
+      }
+    },
+    {
+
+    }
+
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "category": "Nha"
+    },
+    {
+      "id": 2,
+      "category": "Dat"
+    },
+    {
+      "id": 3,
+      "category": "Nha Dat"
+    },
+    {
+      "id": 4,
+      "category": "Dat Nha"
+    }
+  ]
+}

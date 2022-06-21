@@ -1,0 +1,84 @@
+<h1 class="font-text text-danger text-center p-5">Sửa Hợp Đồng</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10 background p-5 shadow-lg rounded">
+      <form class="was-validated" [formGroup]="editForm" (ngSubmit)="editHopDong(id)">
+        <div class="input-group mb-3">
+          <!--            <span class="input-group-text" id="inputGroup-sizing-default11">Id dịch vụ</span>-->
+          <input type="hidden" formControlName="id" class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default11" required>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default1">Mã đất</span>
+          <input type="text" formControlName="maDat" class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default1" required>
+          <!--          <span class="alert-danger input-group-text"-->
+          <!--                *ngIf="createForm.controls.name.hasError('pattern')">Sai format tên</span>-->
+          <span class="alert-danger input-group-text" *ngIf="editForm.controls.maDat.hasError('required')">Không được để trống</span>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default32">Mã người bán</span>
+          <input type="text" formControlName="maNguoiBan" class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default1" required>
+          <!--          <span class="alert-danger input-group-text"-->
+          <!--                *ngIf="createForm.controls.area.hasError('pattern')">Không nhập số âm và chữ</span>-->
+          <span class="alert-danger input-group-text" *ngIf="editForm.controls.maNguoiBan.hasError('required')">Không được để trống</span>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default3">Ngày bắt đầu</span>
+          <input type="text" formControlName="ngayBatDau" class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default3" required>
+          <!--          <span class="alert-danger input-group-text"-->
+          <!--                *ngIf="createForm.controls.cost.hasError('pattern')">Không nhập số âm và chữ</span>-->
+          <span class="alert-danger input-group-text" *ngIf="editForm.controls.ngayBatDau.hasError('required')">Không được để trống</span>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default4">Ngày kết thúc</span>
+          <input type="text" formControlName="ngayKetThuc"  class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default4" required>
+          <!--          <span class="alert-danger input-group-text"-->
+          <!--                *ngIf="createForm.controls.maxPeople.hasError('pattern')">Không nhập số âm và chữ</span>-->
+          <span class="alert-danger input-group-text" *ngIf="editForm.controls.ngayKetThuc.hasError('required')">Không được để trống</span>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default14">Giá</span>
+          <input type="text" formControlName="gia"  class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default14" required>
+          <!--          <span class="alert-danger input-group-text"-->
+          <!--                *ngIf="createForm.controls.maxPeople.hasError('pattern')">Không nhập số âm và chữ</span>-->
+          <span class="alert-danger input-group-text" *ngIf="editForm.controls.gia.hasError('required')">Không được để trống</span>
+        </div>
+        <div class="input-group mb-3">
+          <label for="validationServer14" class="form-label"><span class="input-group-text">Loại đất</span></label>
+          <select class="form-select is-invalid" formControlName="category" id="validationServer14" aria-describedby="validationServer04Feedback"
+                  required [compareWith]="equals">
+            <option selected value=""></option>
+            <option *ngFor="let category of categories" [ngValue]="category">{{category.category}}</option>
+          </select>
+          <span class="alert-danger input-group-text span" *ngIf="editForm.controls.category.hasError('required')">Không được để trống</span>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default47">Địa chỉ</span>
+          <input type="text" formControlName="diaChi" class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default7" required>
+          <!--          <span class="alert-danger input-group-text"-->
+          <!--                *ngIf="createForm.controls.standardRoom.hasError('pattern')">Không nhập số âm và chữ</span>-->
+          <span class="alert-danger input-group-text" *ngIf="editForm.controls.diaChi.hasError('required')">Không được để trống</span>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary position-relative">
+            Sửa hợp đồng
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                    <span class="visually-hidden">New alerts</span>
+                    </span>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

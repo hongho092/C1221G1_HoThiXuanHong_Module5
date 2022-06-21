@@ -1,0 +1,78 @@
+<h3 class="font-text text-danger text-center p-5">Danh Sách Các Xe Đăng Kí Ở Bến Xe XYZ</h3>
+
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col-10"></div>
+    <div class="col-2"><button class="btn btn-primary">Tạo mới</button></div>
+  </div>
+
+  <div class="row">
+    <div class="p-5 col-lg-12 text-center">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Số xe</th>
+          <th scope="col">Loại xe</th>
+          <th scope="col">Điểm đi</th>
+          <th scope="col">Điểm đến</th>
+          <th scope="col">Số điện thoại</th>
+          <th scope="col">Email</th>
+          <th scope="col">Giờ đi</th>
+          <th scope="col">Giờ đến</th>
+          <th scope="col">Khác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let phuongTien of phuongTiens|paginate : { itemsPerPage: 3, currentPage: p }; index as i">
+          <td>{{i+1}}</td>
+          <td>{{phuongTien.bienSoXe}}</td>
+          <td>{{phuongTien.loaiXe}}</td>
+          <td>{{phuongTien.diemDi.tenDiaDiem}}</td>
+          <td>{{phuongTien.diemDen.tenDiaDiem}}</td>
+<!--          <td>{{phuongTien.ngayBatDau | date: "dd-MM-yyyy"}}</td>-->
+<!--          <td>{{phuongTien.ngayKetThuc | date: "dd-MM-yyyy"}}</td>-->
+          <td>{{phuongTien.soDienThoai}}</td>
+          <td>{{phuongTien.email}}</td>
+          <td>{{phuongTien.gioDi}}</td>
+          <td>{{phuongTien.gioDen}}</td>
+          <td>
+            <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" (click)="info(phuongTien.id, phuongTien.bienSoXe)" data-bs-target="#staticBackdrop">
+              <i class="bi bi-trash3-fill"></i>
+            </button>
+            <button class="btn btn-warning"><a class="text-decoration-none" [routerLink]="['/edit',phuongTien.id]"><i
+              class="bi bi-wrench-adjustable"></i></a></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div style="justify-content: space-around;display: flex;">
+    <pagination-controls (pageChange)="p = $event" class=" page-item"></pagination-controls>
+  </div>
+</div>
+
+<!--Modal xóa một trường-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Xóa dịch vụ</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có đồng ý xóa thông tin của xe khách có số xe {{nameDelete}}
+<!--        {{idDelete}}, {{nameDelete}}-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" (click)="delete(idDelete)" data-bs-dismiss="modal" class="btn btn-primary">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,98 @@
+{
+  "PhuongTiens": [
+    {
+      "id": 1,
+      "bienSoXe": "1231",
+      "loaiXe": "Giường nằm",
+      "tenNhaXe": "Mai Linh",
+      "diemDi": {
+        "id": 1,
+        "tenDiaDiem": "Đà Nẵng"
+      },
+      "diemDen": {
+        "id": 4,
+        "tenDiaDiem": "Hà Nội"
+      },
+      "soDienThoai": "0935678367",
+      "email": "mailinh@gmail.com",
+      "gioDi": "08:20",
+      "gioDen": "15:00"
+    },
+    {
+      "id": 2,
+      "bienSoXe": "1241",
+      "loaiXe": "Ghế ngồi",
+      "tenNhaXe": "Hoàng Long",
+      "diemDi": {
+        "id": 2,
+        "tenDiaDiem": "Nha Trang"
+      },
+      "diemDen": {
+        "id": 1,
+        "tenDiaDiem": "Đà Nẵng"
+      },
+      "soDienThoai": "0935678643",
+      "email": "longhoang@gmail.com",
+      "gioDi": "15:03",
+      "gioDen": "17:00"
+    },
+    {
+      "id": 3,
+      "bienSoXe": "5651",
+      "loaiXe": "Ghế ngồi",
+      "tenNhaXe": "Mai Linh",
+      "diemDi": {
+        "id": 2,
+        "tenDiaDiem": "Nha Trang"
+      },
+      "diemDen": {
+        "id": 1,
+        "tenDiaDiem": "Đà Nẵng"
+      },
+      "soDienThoai": "09387678643",
+      "email": "longhoang@gmail.com",
+      "gioDi": "15:03",
+      "gioDen": "17:00"
+    },
+    {
+      "id": 4,
+      "bienSoXe": "7861",
+      "loaiXe": "Giường nằm",
+      "tenNhaXe": "Hoàng Long",
+      "diemDi": {
+        "id": 2,
+        "tenDiaDiem": "Nha Trang"
+      },
+      "diemDen": {
+        "id": 1,
+        "tenDiaDiem": "Đà Nẵng"
+      },
+      "soDienThoai": "0935908643",
+      "email": "longhoang@gmail.com",
+      "gioDi": "15:03",
+      "gioDen": "17:00"
+    }
+  ],
+  "DiaDiems": [
+    {
+      "id": 1,
+      "tenDiaDiem": "Đà Nẵng"
+    },
+    {
+      "id": 2,
+      "tenDiaDiem": "Nha Trang"
+    },
+    {
+      "id": 3,
+      "tenDiaDiem": "Sài Gòn"
+    },
+    {
+      "id": 4,
+      "tenDiaDiem": "Hà Nội"
+    },
+    {
+      "id": 5,
+      "tenDiaDiem": "Đà Lạt"
+    }
+  ]
+}

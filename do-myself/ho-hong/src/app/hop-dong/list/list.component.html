@@ -1,0 +1,151 @@
+<h1 class="font-text text-danger text-center p-5">Danh Sách Hợp Đồng</h1>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="search()">
+        <div>
+          nhập mã
+          <input class="form-control me-2" type="text" formControlName="searchMa"  placeholder="Nhập mã" aria-label="Search">
+          <select class="form-select me-2" formControlName="searchLoaiMa">
+<!--            <option value="maDat" selected>Loại mã</option>-->
+            <option value="maDat">Mã đất</option>
+            <option value="maNguoiBan">Mã người bán</option>
+          </select>
+        </div>
+
+        <div>
+          nhập địa chỉ
+          <input class="form-control me-2" type="text" formControlName="searchAddress" placeholder="Địa chỉ" aria-label="Search">
+        </div>
+
+        <div>
+          from
+          <input class="form-control me-2" type="text" formControlName="searchDateS" aria-label="Search">to
+          <input class="form-control me-2" type="text" formControlName="searchDateE" aria-label="Search">
+          <select class="form-select me-2" formControlName="searchKieuNgay">
+<!--            <option value="" selected>Theo ngày</option>-->
+            <option value="ngayBatDau">Ngày bắt đầu</option>
+            <option value="ngayKetThuc">Ngày kết thúc</option>
+          </select>
+        </div>
+
+        <div>
+          sort by giá
+          <select class="form-select me-2" formControlName="searchSortGia">
+            <option value="" selected>Theo thứ tự</option>
+            <option value="asc">Tăng dần</option>
+            <option value="desc">Giảm dần</option>
+          </select>
+        </div>
+
+        <button class="btn btn-outline-success" type="submit">Tìm</button>
+      </form>
+    </div>
+    <div class="col-1"></div>
+  </div>
+
+  <div class="row">
+    <div class="p-5 col-lg-12 text-center">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+              <i class="bi bi-trash3-fill"></i>
+            </button>
+          </th>
+          <th scope="col">ID hợp đồng</th>
+          <th scope="col">Mã đất</th>
+          <th scope="col">Mã người bán</th>
+          <th scope="col">Ngày bắt đầu</th>
+          <th scope="col">Ngày kết thúc</th>
+          <th scope="col">Gía</th>
+          <th scope="col">Địa chỉ</th>
+          <th scope="col">Loại đất</th>
+          <th scope="col">Khác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let hopDong of hopDongs|paginate : { itemsPerPage: 3, currentPage: p }">
+          <td><input type="checkbox" (click)="addIdToDeleteList(hopDong.id)"></td>
+          <td>{{hopDong.id}}</td>
+          <td>{{hopDong.maDat}}</td>
+          <td>{{hopDong.maNguoiBan}}</td>
+          <td>{{hopDong.ngayBatDau | date: "dd-MM-yyyy"}}</td>
+          <td>{{hopDong.ngayKetThuc | date: "dd-MM-yyyy"}}</td>
+          <td>{{hopDong.gia | currency: "VND"}}</td>
+          <td>{{hopDong.diaChi}}</td>
+          <td>{{hopDong.category.category}}</td>
+          <td>
+            <div class="row">
+              <div class="dropend">
+                <div class="dropdown-toggle" data-bs-toggle="dropdown">
+                  <i class="bi bi-patch-plus-fill"></i>
+                </div>
+                <ul class="dropdown-menu" style="width: 10px">
+                  <li>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" (click)="info(hopDong.id, hopDong.maDat)" data-bs-target="#staticBackdrop">
+                      <i class="bi bi-trash3-fill"></i>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="btn btn-warning mt-2"><a class="text-decoration-none" [routerLink]="['/edit',hopDong.id]"><i
+                      class="bi bi-wrench-adjustable"></i></a></button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div style="justify-content: space-around;display: flex;">
+    <pagination-controls (pageChange)="p = $event" class=" page-item"></pagination-controls>
+  </div>
+</div>
+
+<!--Modal xóa một trường-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Xóa dịch vụ</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Sẽ không thể hoàn tác nếu bạn xóa
+        {{idDelete}}, {{nameDelete}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" (click)="delete(idDelete)" data-bs-dismiss="modal" class="btn btn-primary">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal xóa nhiều trường-->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel1">Xóa dịch vụ</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn muốn xóa các bản ghi đã chọn?.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" (click)="deleteMul()" data-bs-dismiss="modal" class="btn btn-primary">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
