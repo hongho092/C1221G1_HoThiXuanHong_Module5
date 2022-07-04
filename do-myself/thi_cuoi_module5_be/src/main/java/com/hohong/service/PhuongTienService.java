@@ -5,6 +5,7 @@ import com.hohong.repository.IPhuongTienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,5 +43,30 @@ public class PhuongTienService implements IPhuongTienService{
     @Override
     public List<PhuongTien> findAllSearch(String search) {
         return phuongTienRepository.findAllByLoaiXeContaining(search);
+    }
+
+    @Override
+    public List<PhuongTien> findAll1(Sort sort) {
+        return phuongTienRepository.findAll(sort);
+    }
+
+    @Override
+    public List<PhuongTien> findAll2(String s, Sort sort) {
+        return phuongTienRepository.findByBienSoXe(s, sort);
+    }
+
+    @Override
+    public List<PhuongTien> findAll3(List<String> list, Sort sort) {
+        return phuongTienRepository.findByBienSoXeNotIn(list, sort);
+    }
+
+    @Override
+    public List<PhuongTien> findAll4(String s, String s1, Sort sort) {
+        return phuongTienRepository.findByGioDiBetween(s, s1, sort);
+    }
+
+    @Override
+    public List<PhuongTien> findAll5(String s, String s1, String s2, String s3, Sort sort) {
+        return phuongTienRepository.findByGioDiBetweenAndGioDenBetween(s, s1, s2, s3, sort);
     }
 }

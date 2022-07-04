@@ -17,11 +17,11 @@ export class ListComponent implements OnInit {
 
   nameDelete: string;
 
-  p = 0;
-
   searchForm: FormGroup;
 
   listIdDelete: number[] = [];
+
+
 
   constructor(private hopDongService: HopDongService,
               private router: Router) {
@@ -80,20 +80,20 @@ export class ListComponent implements OnInit {
       this.searchForm.value.searchSortGia = '';
     }
     console.log(this.searchForm.value);
-    this.hopDongService.searchHopDong(this.searchForm.value.searchMa,
-                                      this.searchForm.value.searchLoaiMa,
-                                      this.searchForm.value.searchAddress,
-                                      this.searchForm.value.searchSortGia,
-                                      this.searchForm.value.searchDateS,
-                                      this.searchForm.value.searchDateE,
-                                      this.searchForm.value.searchKieuNgay).subscribe(
-      hopDongs => this.hopDongs = hopDongs);
-    console.log(this.hopDongs);
+    // this.hopDongService.searchHopDong(this.searchForm.value.searchMa,
+    //                                   this.searchForm.value.searchLoaiMa,
+    //                                   this.searchForm.value.searchAddress,
+    //                                   this.searchForm.value.searchSortGia,
+    //                                   this.searchForm.value.searchDateS,
+    //                                   this.searchForm.value.searchDateE,
+    //                                   this.searchForm.value.searchKieuNgay).subscribe(
+    //   hopDongs => this.hopDongs = hopDongs);
   }
 
   addIdToDeleteList(id: number) {
     let flag = false;
-    for (let idd of this.listIdDelete) {
+    // sử dụng để loại id ra khỏi mảng nếu id đã được checkbox
+    for (const idd of this.listIdDelete) {
       if (id === idd) {
         this.listIdDelete = this.listIdDelete.filter(thisId => {
           flag = true;
@@ -101,23 +101,43 @@ export class ListComponent implements OnInit {
         });
       }
     }
+    // sử dụng để thêm id vào trong mảng nếu id chưa được checkbox
     if (!flag) {
       this.listIdDelete.push(id);
     }
-    console.log(this.listIdDelete);
   }
 
   countDel = 0;
+
+  color: string = 'white';
 
   deleteMul() {
     for (let id of this.listIdDelete) {
       this.hopDongService.deleteHopDong(id).subscribe(() => {
         this.countDel++;
-      }, error => {}, () => {
+      }, error => {
+        }, () => {
         if (this.countDel === this.listIdDelete.length) {
           this.ngOnInit();
         }
       });
     }
+  }
+
+  p: number = 1;
+  m: number = 3;
+
+  hightlight(i: number) {
+
+    i = (this.m * (this.p - 1)) + i;
+    this.hopDongs[i].complete = !this.hopDongs[i].complete;
+    // console.log('id của đối tượng' + id);
+    console.log('i của index' + i);
+    console.log('số trang' + this.p);
+    // if (this.color === 'yellow') {
+    //   this.color = 'white';
+    // } else {
+    //   this.color = 'yellow';
+    // }
   }
 }

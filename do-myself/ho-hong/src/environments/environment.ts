@@ -4,8 +4,18 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000'
+  apiUrl: 'http://localhost:3000',
+  firebaseConfig: {
+    apiKey: 'AIzaSyAA8voNHUxJmoKXaGSbsc4XVr3dNXDG5T8',
+    authDomain: 'test-upload-ef652.firebaseapp.com',
+    projectId: 'test-upload-ef652',
+    storageBucket: 'test-upload-ef652.appspot.com',
+    messagingSenderId: '505069057470',
+    appId: '1:505069057470:web:3e134c7f3b8d281b71f5ef',
+    measurementId: 'G-G5YWNVSNMN'
+  }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
@@ -14,4 +24,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI. npm install firebase

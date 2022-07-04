@@ -11,6 +11,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule
   ],
   providers: [],
   bootstrap: [AppComponent]

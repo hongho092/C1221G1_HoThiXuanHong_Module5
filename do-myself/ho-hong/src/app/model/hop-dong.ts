@@ -9,4 +9,5 @@ export interface HopDong {
   diaChi: string;
   gia: string;
   category: Category;
+  complete?: boolean;
 }

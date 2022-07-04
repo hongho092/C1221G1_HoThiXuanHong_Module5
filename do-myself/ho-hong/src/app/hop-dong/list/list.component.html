@@ -18,7 +18,7 @@
 
         <div>
           nhập địa chỉ
-          <input class="form-control me-2" type="text" formControlName="searchAddress" placeholder="Địa chỉ" aria-label="Search">
+          <input class="form-control me-2" type="time" formControlName="searchAddress" placeholder="Địa chỉ" aria-label="Search">
         </div>
 
         <div>
@@ -69,7 +69,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let hopDong of hopDongs|paginate : { itemsPerPage: 3, currentPage: p }">
+        <tr *ngFor="let hopDong of hopDongs|paginate : { itemsPerPage: m, currentPage: p }, index as i" (click)="hightlight(i)"
+            [class.highlight]="hopDong.complete">
           <td><input type="checkbox" (click)="addIdToDeleteList(hopDong.id)"></td>
           <td>{{hopDong.id}}</td>
           <td>{{hopDong.maDat}}</td>

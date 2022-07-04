@@ -1,0 +1,9 @@
+<div class="form-group">
+  <label for="avatar">Chọn ảnh đại diện</label>
+  <input type="file" id="avatar" formControlName="avatar" #fileUpLoader
+         (change)="showPreview($event)">
+  <label class="custom-file-label" for="avatar">choose file</label>
+</div>
+<img [src]="imgSrc" height="200" width="200" alt="Ảnh đại diện"
+     (click)="fileUpLoader.click()">
+
