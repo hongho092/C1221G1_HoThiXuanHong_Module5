@@ -8,6 +8,7 @@ import { UploadImgComponent } from './upload-img/upload-img.component';
 import { ImportInvoiceListComponent } from './sprint1/import-invoice-list/import-invoice-list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

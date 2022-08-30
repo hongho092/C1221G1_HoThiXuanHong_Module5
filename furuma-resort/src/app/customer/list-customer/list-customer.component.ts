@@ -63,8 +63,10 @@ export class ListCustomerComponent implements OnInit {
     console.log(this.searchNameForm.value.searchName);
     console.log(this.searchNameForm.value.searchAddress);
     console.log(this.searchNameForm.value.searchType);
-    this.customerService.searchCustomer(this.searchNameForm.value.searchName, this.searchNameForm.value.searchAddress, this.searchNameForm.value.searchType).subscribe(customers => {
-      this.customers = customers;
+    this.customerService.searchCustomer(this.searchNameForm.value.searchName,
+                                        this.searchNameForm.value.searchAddress,
+                                        this.searchNameForm.value.searchType).subscribe(customers => {
+                                        this.customers = customers;
     });
   }
 }

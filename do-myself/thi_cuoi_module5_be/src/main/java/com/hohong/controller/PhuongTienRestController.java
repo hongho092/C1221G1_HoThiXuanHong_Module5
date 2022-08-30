@@ -7,21 +7,15 @@ import com.hohong.service.IDiaDiemService;
 import com.hohong.service.IPhuongTienService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -42,21 +36,21 @@ public class PhuongTienRestController {
         return new ResponseEntity<>(phuongTienPage, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/list-try")
-    public ResponseEntity<List<PhuongTien>> getPagePhuongTienTry() {
-        Sort sort = Sort.by("id").ascending();
-        List<PhuongTien> phuongTienPage = phuongTienService.findAll1(sort);
-//        List<PhuongTien> phuongTienPage = phuongTienService.findAll2("9999", sort);
-//        String[] hdv = {"9999", "8888"};
-//        List<String> list = Arrays.asList(hdv);
-//        List<PhuongTien> phuongTienPage = phuongTienService.findAll3(list, sort);
-//        List<PhuongTien> phuongTienPage = phuongTienService.findAll4("07:00", "09:30", sort);
-//        List<PhuongTien> phuongTienPage = phuongTienService.findAll5("", "09:30", "", "", sort);
-        if(phuongTienPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(phuongTienPage, HttpStatus.OK);
-    }
+//    @GetMapping(value = "/list-try")
+//    public ResponseEntity<List<PhuongTien>> getPagePhuongTienTry() {
+//        Sort sort = Sort.by("id").ascending();
+//        List<PhuongTien> phuongTienPage = phuongTienService.findAll1(sort);
+////        List<PhuongTien> phuongTienPage = phuongTienService.findAll2("9999", sort);
+////        String[] hdv = {"9999", "8888"};
+////        List<String> list = Arrays.asList(hdv);
+////        List<PhuongTien> phuongTienPage = phuongTienService.findAll3(list, sort);
+////        List<PhuongTien> phuongTienPage = phuongTienService.findAll4("07:00", "09:30", sort);
+////        List<PhuongTien> phuongTienPage = phuongTienService.findAll5("", "09:30", "", "", sort);
+//        if(phuongTienPage.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(phuongTienPage, HttpStatus.OK);
+//    }
 
     @GetMapping(value = "/listDiaDiem")
     public ResponseEntity<List<DiaDiem>> getListDiaDiem() {

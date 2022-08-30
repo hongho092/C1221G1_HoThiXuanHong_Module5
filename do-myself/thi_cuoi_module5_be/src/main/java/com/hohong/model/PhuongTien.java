@@ -36,15 +36,5 @@ public class PhuongTien {
     private String gioDi;
     private String gioDen;
 
-//    id: number;
-//    bienSoXe: string;
-//    loaiXe: string;
-//    tenNhaXe: string;
-//    diemDi: DiaDiem;
-//    diemDen: DiaDiem;
-//    soDienThoai: string;
-//    email: string;
-//    gioDi: string;
-//    gioDen: string;
 
 }

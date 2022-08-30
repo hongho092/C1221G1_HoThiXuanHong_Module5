@@ -57,3 +57,13 @@ http://localhost:3000/hopDongs?maDat_like=MD-1234&diaChi_like=code&ngayBatDau_gt
 http://localhost:3000/hopDongs?maDat_like=&diaChi_like=code
 
 ^([0-1][0-9]|2[0-4]):([0-5][0-9])$
+
+^([A-ZĐÔ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]+ ?)*$
+
+getCurrentDateTime(): string {
+    return formatDate(new Date(), 'dd-MM-yyyyhhmmssa', 'en-US');
+  }
+
+hồng hồ tổng hợp -> xóa nhiều, sort
+thi module5 -> fe
+thi_cuoi_module5_be -> be

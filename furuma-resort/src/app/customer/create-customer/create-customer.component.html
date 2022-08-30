@@ -25,7 +25,7 @@
             <span class="input-group-text" id="inputGroup-sizing-default0">Tên</span>
             <input type="text" formControlName="name" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default0" required>
-            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.name.hasError('pattern')">Không đúng format tên</span>
+            <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.name.hasError('pattern') && createCustomerForm.controls.name.dirty">Không đúng format tên</span>
             <span class="alert-danger input-group-text" *ngIf="createCustomerForm.controls.name.hasError('required')">Không được để trống</span>
           </div>
           <div class="input-group mb-3">

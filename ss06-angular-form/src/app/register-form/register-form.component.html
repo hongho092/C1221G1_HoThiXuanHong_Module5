@@ -18,12 +18,12 @@
 
   <label>Password</label>
   <input type="password" formControlName="password"><br>
-  <p class="text-danger" *ngIf="registerForm.controls.password.hasError('required') && registerForm.controls.password.touched">Chưa đúng định dạng</p>
+  <p class="text-danger" *ngIf="registerForm.controls.password.hasError('required')">Chưa đúng định dạng</p>
 
 
   <label>Confirm Password</label>
   <input type="password" formControlName="confirmPassword"><br>
-  <p class="text-danger" *ngIf="registerForm.controls.confirmPassword.hasError('invalid1') && registerForm.controls.confirmPassword.touched">Chưa đúng định dạng</p>
+  <p class="text-danger" *ngIf="registerForm.controls.confirmPassword.hasError('passwordError')">Chưa đúng định dạng</p>
 
 
   <label>Country</label>

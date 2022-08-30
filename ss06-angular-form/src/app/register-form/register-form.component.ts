@@ -9,7 +9,7 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, 
 export class RegisterFormComponent implements OnInit {
 
   registerForm: FormGroup;
-  confirmForm: FormGroup;
+  // confirmForm: FormGroup;
 
   constructor() {
     this.registerForm = new FormGroup({

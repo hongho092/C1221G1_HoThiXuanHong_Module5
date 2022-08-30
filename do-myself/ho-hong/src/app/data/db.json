@@ -14,45 +14,6 @@
       }
     },
     {
-      "id": 2,
-      "maDat": "MD-1234",
-      "maNguoiBan": "MB-4563",
-      "ngayBatDau": "2019/05/20",
-      "ngayKetThuc": "2019/05/22",
-      "diaChi": "typicode",
-      "gia": "1",
-      "category": {
-        "id": 4,
-        "category": "Dat Nha"
-      }
-    },
-    {
-      "id": 3,
-      "maDat": "MD-1234",
-      "maNguoiBan": "MB-4563",
-      "ngayBatDau": "2019/05/20",
-      "ngayKetThuc": "2019/05/22",
-      "diaChi": "typicode",
-      "gia": "1",
-      "category": {
-        "id": 4,
-        "category": "Dat Nha"
-      }
-    },
-    {
-      "id": 4,
-      "maDat": "MD-1234",
-      "maNguoiBan": "MB-4563",
-      "ngayBatDau": "2019/05/20",
-      "ngayKetThuc": "2019/05/22",
-      "diaChi": "typicode",
-      "gia": "1",
-      "category": {
-        "id": 4,
-        "category": "Dat Nha"
-      }
-    },
-    {
       "maDat": "564",
       "maNguoiBan": "rgfgd",
       "ngayBatDau": "2022-06-23",

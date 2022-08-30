@@ -3,7 +3,6 @@ import {Facility} from '../model/facility';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Customer} from '../model/customer';
 import {RentType} from '../model/rent-type';
 
 const API_URL = `${environment.apiUrl}`;
@@ -39,24 +38,4 @@ export class FacilityService {
   getAllRentType(): Observable<RentType[]> {
     return this.http.get<RentType[]>(API_URL + '/rentTypes');
   }
-
-  // getAll() {
-  //   return this.facilitys;
-  // }
-  //
-  // saveFacility(facility: Facility) {
-  //   this.facilitys.push(facility);
-  // }
-  //
-  // findById(id: number) {
-  //   return this.facilitys.find(facility => facility.id === id);
-  // }
-  //
-  // editFacility(id: number, facility: Facility) {
-  //   for (let i = 0; i < this.facilitys.length; i++) {
-  //     if (this.facilitys[i].id === id) {
-  //       this.facilitys[i] = facility;
-  //     }
-  //   }
-  // }
 }
