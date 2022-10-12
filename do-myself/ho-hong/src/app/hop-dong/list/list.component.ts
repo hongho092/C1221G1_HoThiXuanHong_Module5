@@ -28,13 +28,10 @@ export class ListComponent implements OnInit {
     this.searchForm = new FormGroup({
       searchMa: new FormControl(),
       searchLoaiMa: new FormControl(),
-
       searchAddress: new FormControl(),
-
       searchDateS: new FormControl(),
       searchDateE: new FormControl(),
       searchKieuNgay: new FormControl(),
-
       searchSortGia: new FormControl()
     });
   }
